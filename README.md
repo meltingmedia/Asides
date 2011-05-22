@@ -11,8 +11,10 @@ right).
 as asides will be stored).
 * set aside TV input option value at `@EVAL return $modx->runSnippet('getAside');`
 * allow aside TV to access your desired templates
-* in those templates, set `[[showAside? &chunks=```[[*aside]]```]]`
+* in those templates, set `[[showAside? &chunks=``[[*aside]]``]]`
 * you now should be good to go!
+
+Note: setting "Lock chunk for editing" as activated prevents the chunk edition from the grid
 
 ## Credits
 
