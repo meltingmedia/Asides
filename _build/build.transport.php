@@ -174,9 +174,6 @@ if (empty($menu)) {
     ));
     $modx->log(modX::LOG_LEVEL_INFO,'Adding in PHP resolvers...');
     $vehicle->resolve('php',array(
-        'source' => $sources['resolvers'] . 'resolve.tables.php',
-    ));
-    $vehicle->resolve('php',array(
         'source' => $sources['resolvers'] . 'resolve.paths.php',
     ));
     $builder->putVehicle($vehicle);

@@ -31,14 +31,14 @@ require_once MODX_CORE_PATH . 'model/modx/modrequest.class.php';
  * @package asides
  * @extends modRequest
  */
-class modExtraControllerRequest extends modRequest {
-    public $modExtra = null;
+class AsidesControllerRequest extends modRequest {
+    public $asides = null;
     public $actionVar = 'action';
     public $defaultAction = 'home';
 
-    function __construct(Asides &$modExtra) {
-        parent :: __construct($modExtra->modx);
-        $this->Asides =& $modExtra;
+    function __construct(Asides &$asides) {
+        parent :: __construct($asides->modx);
+        $this->Asides =& $asides;
     }
 
     /**

@@ -20,25 +20,28 @@
  * @package asides
  */
 /**
- * Resolve creating db tables
- *
+ * Create an aside chunk
+ * 
  * @package asides
- * @subpackage build
+ * @subpackage processors
  */
-if ($object->xpdo) {
-    switch ($options[xPDOTransport::PACKAGE_ACTION]) {
-        case xPDOTransport::ACTION_INSTALL:
-            $modx =& $object->xpdo;
-            $modelPath = $modx->getOption('asides.core_path',null,$modx->getOption('core_path').'components/asides/').'model/';
-            $modx->addPackage('asides',$modelPath);
-
-            $manager = $modx->getManager();
-
-            $manager->createObjectContainer('modExtraItem');
-
-            break;
-        case xPDOTransport::ACTION_UPGRADE:
-            break;
-    }
+$alreadyExists = $modx->getObject('modChunk',array(
+    'name' => $_POST['name'],
+));
+if ($alreadyExists) {
+    $modx->error->addField('name',$modx->lexicon('asides.aside_err_ae'));
 }
-return true;
+
+if ($modx->error->hasError()) {
+    return $modx->error->failure();
+}
+
+$aside = $modx->newObject('modChunk');
+$aside->set('category', $modx->getOption('asides.categoryId'));
+$aside->fromArray($_POST);
+
+if ($aside->save() == false) {
+    return $modx->error->failure($modx->lexicon('asides.aside_err_save'));
+}
+
+return $modx->error->success('',$aside);

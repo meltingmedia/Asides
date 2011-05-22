@@ -20,32 +20,22 @@
  * @package asides
  */
 /**
+ * Update an aside chunk
+ * 
  * @package asides
+ * @subpackage processors
  */
-$xpdo_meta_map['modExtraItem']= array (
-  'package' => 'asides',
-  'table' => 'modextra_items',
-  'fields' => 
-  array (
-    'name' => '',
-    'description' => '',
-  ),
-  'fieldMeta' => 
-  array (
-    'name' => 
-    array (
-      'dbtype' => 'varchar',
-      'precision' => '100',
-      'phptype' => 'string',
-      'null' => false,
-      'default' => '',
-    ),
-    'description' => 
-    array (
-      'dbtype' => 'text',
-      'phptype' => 'text',
-      'null' => false,
-      'default' => '',
-    ),
-  ),
-);
+/* get board */
+if (empty($scriptProperties['id'])) return $modx->error->failure($modx->lexicon('asides.aside_err_ns'));
+$aside = $modx->getObject('modChunk',$scriptProperties['id']);
+if (!$aside) return $modx->error->failure($modx->lexicon('asides.aside_err_nf'));
+
+$aside->fromArray($scriptProperties);
+
+if ($aside->save() == false) {
+    return $modx->error->failure($modx->lexicon('asides.aside_err_save'));
+}
+
+/* output */
+$asideArray = $aside->toArray('',true);
+return $modx->error->success('',$asideArray);

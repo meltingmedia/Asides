@@ -25,7 +25,7 @@
  * @package asides
  * @subpackage controllers
  */
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/widgets/items.grid.js');
+$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/widgets/asides.grid.js');
 $modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/widgets/home.panel.js');
 $modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/sections/home.js');
 $output = '<div id="asides-panel-home-div"></div>';

@@ -4,7 +4,7 @@ Asides.panel.Home = function(config) {
         border: false
         ,baseCls: 'modx-formpanel'
         ,items: [{
-            html: '<h2>'+_('asides')+'</h2>'
+            html: '<h2>'+_('asides.menu')+'</h2>'
             ,border: false
             ,cls: 'modx-page-header'
         },{

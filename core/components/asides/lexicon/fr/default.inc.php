@@ -25,16 +25,24 @@
  * @package asides
  * @subpackage lexicon
  */
-$_lang['asides'] = 'Asides';
-$_lang['asides.menu_desc'] = 'A sample Extra to develop from.';
-$_lang['asides.items'] = 'Items';
-$_lang['asides.item_create'] = 'Create Item';
-$_lang['asides.item_err_ae'] = 'An Item already exists with that name.';
-$_lang['asides.item_err_nf'] = 'Item not found.';
-$_lang['asides.item_err_ns'] = 'Item not specified.';
-$_lang['asides.item_err_remove'] = 'An error occurred while trying to remove the Item.';
-$_lang['asides.item_err_save'] = 'An error occurred while trying to save the Item.';
-$_lang['asides.item_remove'] = 'Remove Item';
-$_lang['asides.item_remove_confirm'] = 'Are you sure you want to remove this Item?';
-$_lang['asides.item_update'] = 'Update Item';
-$_lang['asides.intro_msg'] = 'Manage your items.';
+$_lang['asides.menu'] = 'Asides';
+$_lang['asides.menu_desc'] = 'Gérez vos « modules » de colonne';
+$_lang['asides.intro_msg'] = 'Gérez vos « modules » de colonne.';
+
+$_lang['asides.items'] = 'Asides';
+
+$_lang['asides.aside_create'] = 'Créer un module';
+$_lang['asides.aside_err_ae'] = 'Un module portant ce nom existe déjà.';
+$_lang['asides.aside_err_nf'] = 'Module non trouvé.';
+$_lang['asides.aside_err_ns'] = 'Module non indiqué.';
+$_lang['asides.aside_err_remove'] = 'Une erreur est survenue lors de la suppression du module.';
+$_lang['asides.aside_err_save'] = 'Une erreur est survenue lors de la sauvegarde du module.';
+$_lang['asides.aside_remove'] = 'Supprimer ce module';
+$_lang['asides.aside_remove_confirm'] = 'Êtes-vous sûr de vouloir supprimer ce module ?';
+$_lang['asides.aside_update'] = 'Mettre à jour ce module';
+$_lang['asides.aside.content'] = 'Contenu';
+
+// sortable check box TV
+$_lang['cbs_name'] = 'Nom';
+$_lang['cbs_active'] = 'Actif';
+$_lang['cbs_sort'] = 'Classer';

@@ -25,16 +25,24 @@
  * @package asides
  * @subpackage lexicon
  */
-$_lang['asides'] = 'Asides';
-$_lang['asides.menu_desc'] = 'A sample Extra to develop from.';
-$_lang['asides.items'] = 'Items';
-$_lang['asides.item_create'] = 'Create Item';
-$_lang['asides.item_err_ae'] = 'An Item already exists with that name.';
-$_lang['asides.item_err_nf'] = 'Item not found.';
-$_lang['asides.item_err_ns'] = 'Item not specified.';
-$_lang['asides.item_err_remove'] = 'An error occurred while trying to remove the Item.';
-$_lang['asides.item_err_save'] = 'An error occurred while trying to save the Item.';
-$_lang['asides.item_remove'] = 'Remove Item';
-$_lang['asides.item_remove_confirm'] = 'Are you sure you want to remove this Item?';
-$_lang['asides.item_update'] = 'Update Item';
-$_lang['asides.intro_msg'] = 'Manage your items.';
+$_lang['asides.menu'] = 'Asides';
+$_lang['asides.menu_desc'] = 'Manage your asides.';
+$_lang['asides.intro_msg'] = 'Manage your asides.';
+
+$_lang['asides.items'] = 'Asides';
+
+$_lang['asides.aside_create'] = 'Create an aside';
+$_lang['asides.aside_err_ae'] = 'An aside already exists with that name.';
+$_lang['asides.aside_err_nf'] = 'Aside not found.';
+$_lang['asides.aside_err_ns'] = 'Aside not specified.';
+$_lang['asides.aside_err_remove'] = 'An error occurred while trying to remove the aside.';
+$_lang['asides.aside_err_save'] = 'An error occurred while trying to save the aside.';
+$_lang['asides.aside_remove'] = 'Remove this aside';
+$_lang['asides.aside_remove_confirm'] = 'Are you sure you want to remove this aside?';
+$_lang['asides.aside_update'] = 'Update this aside';
+$_lang['asides.aside.content'] = 'Content';
+
+// sortable check box TV
+$_lang['cbs_name'] = 'Name';
+$_lang['cbs_active'] = 'Active';
+$_lang['cbs_sort'] = 'Sort';

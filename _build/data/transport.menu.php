@@ -39,7 +39,7 @@ $action->fromArray(array(
 /* load action into menu */
 $menu= $modx->newObject('modMenu');
 $menu->fromArray(array(
-    'text' => 'asides',
+    'text' => 'asides.menu',
     'parent' => 'components',
     'description' => 'asides.menu_desc',
     'icon' => 'images/icons/plugin.gif',

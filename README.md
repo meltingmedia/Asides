@@ -1,34 +1,13 @@
 ## Asides
 
 Asides is a MODX Extra allowing you (and your clients) to easyly manage "asides" on a website.
-You'll be able to quickly create chunks without having acces to the Elements tab.
+You'll be able to quickly create chunks without having acces to the Elements tab (and even without the new_chunk,
+right).
 
 ## Configuration
 
-Now, you'll want to change references to Asides in the files in your
-new copied-from-Asides repo to whatever name of your new Extra will be. Once
-you've done that, you can create some System Settings:
-
-- 'mynamespace.core_path' - Point to /path/to/my/extra/core/components/extra/
-- 'mynamespace.assets_url' - /path/to/my/extra/assets/components/extra/
-
-Then clear the cache. This will tell the Extra to look for the files located
-in these directories, allowing you to develop outside of the MODx webroot!
-
-## Information
-
-Note that if you git archive from this repository, you may not need all of its
-functionality. This Extra contains files and the setup to do the following:
-
-- Integrates a custom table of "Items"
-- A snippet listing Items sorted by name and templated with a chunk
-- A custom manager page to manage Items on
-
-If you do not require all of this functionality, simply remove it and change the
-appropriate code.
-
-Also, you'll want to change all the references of 'Asides' to whatever the
-name of your component is.
+Install via package manager.
+Setup the asides.categoryId to fit your needs.
 
 ## Credits
 

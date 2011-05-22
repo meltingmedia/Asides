@@ -28,7 +28,7 @@
 $settings = array();
 
 /*
-$settings['gallery.']= $modx->newObject('modSystemSetting');
+$settings['gallery.'] = $modx->newObject('modSystemSetting');
 $settings['gallery.']->fromArray(array(
     'key' => 'gallery.',
     'value' => '',

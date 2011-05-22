@@ -30,12 +30,23 @@ $snippets = array();
 $snippets[0]= $modx->newObject('modSnippet');
 $snippets[0]->fromArray(array(
     'id' => 0,
-    'name' => 'Asides',
-    'description' => 'Displays Items.',
-    'snippet' => getSnippetContent($sources['source_core'].'/elements/snippets/snippet.asides.php'),
+    'name' => 'getAside',
+    'description' => 'Grabs the list of chunks to be used as aside items in aside TV',
+    'snippet' => getSnippetContent($sources['source_core'].'/elements/snippets/getAside.php'),
 ),'',true,true);
 $properties = include $sources['build'].'properties/properties.asides.php';
 $snippets[0]->setProperties($properties);
+unset($properties);
+
+$snippets[1]= $modx->newObject('modSnippet');
+$snippets[1]->fromArray(array(
+    'id' => 1,
+    'name' => 'showAside',
+    'description' => 'Renders the selected chunks',
+    'snippet' => getSnippetContent($sources['source_core'].'/elements/snippets/showAside.php'),
+),'',true,true);
+$properties = include $sources['build'].'properties/properties.asides.php';
+$snippets[1]->setProperties($properties);
 unset($properties);
 
 return $snippets;

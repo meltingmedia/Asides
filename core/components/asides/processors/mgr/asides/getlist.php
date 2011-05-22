@@ -20,7 +20,27 @@
  * @package asides
  */
 /**
+ * Get a list of asides chunks
+ *
  * @package asides
+ * @subpackage processors
  */
-require_once (strtr(realpath(dirname(dirname(__FILE__))), '\\', '/') . '/modextraitem.class.php');
-class modExtraItem_mysql extends modExtraItem {}
+$isLimit = !empty($_REQUEST['limit']);
+$start = $modx->getOption('start',$_REQUEST,0);
+$limit = $modx->getOption('limit',$_REQUEST,20);
+$sort = $modx->getOption('sort',$_REQUEST,'name');
+$dir = $modx->getOption('dir',$_REQUEST,'ASC');
+
+$c = $modx->newQuery('modChunk', array('category' => $modx->getOption('asides.categoryId')));
+$count = $modx->getCount('modChunk',$c);
+
+$c->sortby($sort,$dir);
+if ($isLimit) $c->limit($limit,$start);
+$asides = $modx->getCollection('modChunk',$c);
+
+$list = array();
+foreach ($asides as $aside) {
+    $asideArray = $aside->toArray();
+    $list[]= $asideArray;
+}
+return $this->outputArray($list,$count);
