@@ -1,13 +1,18 @@
 ## Asides
 
-Asides is a MODX Extra allowing you (and your clients) to easyly manage "asides" on a website.
-You'll be able to quickly create chunks without having acces to the Elements tab (and even without the new_chunk,
+Asides is a MODX Extra allowing you (and your clients) to easily manage "asides" on a website.
+You'll be able to quickly create chunks without having access to the Elements tab (and even without the new_chunk
 right).
 
 ## Configuration
 
-Install via package manager.
-Setup the asides.categoryId to fit your needs.
+* Install via package manager.
+* Setup the asides.categoryId system setting to fit your needs (indicates the category ID where your chunks to be used
+as asides will be stored).
+* set aside TV input option value at `@EVAL return $modx->runSnippet('getAside');`
+* allow aside TV to access your desired templates
+* in those templates, set `[[showAside? &chunks=```[[*aside]]```]]`
+* you now should be good to go!
 
 ## Credits
 

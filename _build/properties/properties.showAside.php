@@ -20,10 +20,20 @@
  * @package asides
  */
 /**
- * Properties French Lexicon Entries for Asides
+ * Properties for the Asides snippet.
  *
  * @package asides
- * @subpackage lexicon
+ * @subpackage build
  */
+$properties = array(
+    array(
+        'name' => 'chunks',
+        'desc' => 'prop_asides.chunks_desc',
+        'type' => 'textfield',
+        'options' => '',
+        'value' => '',
+        'lexicon' => 'asides:properties',
+    )
+);
 
-$_lang['prop_asides.chunks_desc'] = 'Indiquez la variable de modèle contenant la liste de vos chunks à utiliser comme modules.';
+return $properties;

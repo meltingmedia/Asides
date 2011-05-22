@@ -5,6 +5,10 @@
  * @package asides
  */
 
+if (!isset($scriptProperties['chunks'])) {
+    return '';
+}
+
 $ar_chunks = explode('||',$chunks);
 $ar_chunks = array_unique($ar_chunks);
 

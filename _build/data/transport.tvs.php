@@ -20,10 +20,25 @@
  * @package asides
  */
 /**
- * Properties French Lexicon Entries for Asides
+ * Creates required TV
  *
  * @package asides
- * @subpackage lexicon
+ * @subpackage build
  */
+$tvs = array();
 
-$_lang['prop_asides.chunks_desc'] = 'Indiquez la variable de modèle contenant la liste de vos chunks à utiliser comme modules.';
+$tvs[1]= $modx->newObject('modTemplateVar');
+$tvs[1]->fromArray(array(
+    'id' => 1,
+    'name' => 'aside',
+    'caption' => 'Asides',
+    'description' => 'List of chunks to be used as asides.',
+    'type' => 'checkboxSortable',
+    'display' => 'default',
+    'locked' => 0,
+    'rank' => 0,
+    'default_text' => '@INHERIT',
+    //'elements' => "@EVAL return $modx->runSnippet('getAside');",
+),'',true,true);
+
+return $tvs;

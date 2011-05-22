@@ -46,3 +46,7 @@ $_lang['asides.aside.content'] = 'Contenu';
 $_lang['cbs_name'] = 'Nom';
 $_lang['cbs_active'] = 'Actif';
 $_lang['cbs_sort'] = 'Classer';
+
+// system settings
+$_lang['setting_asides.categoryId'] = 'ID de la catégorie';
+$_lang['setting_asides.categoryId_desc'] = 'l\'ID de la catégorie contenant les chunks de vos modules de colonne.';

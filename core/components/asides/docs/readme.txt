@@ -1,11 +1,11 @@
---------------------
+--------------------------------------------------------------------------------
 Asides
---------------------
-Version: 1.0.0
-Author: John Doe <john@doe.com>
---------------------
+--------------------------------------------------------------------------------
+Version: 1.0.0-rc1
+Author: Romain Tripault // Melting Media <romain@melting-media.com>
+--------------------------------------------------------------------------------
 
-A basic Extra for MODx Revolution.
+An extra to easily manage "asides" for MODX Revolution 2.1+
 
 Feel free to suggest ideas/improvements/bugs on GitHub:
-http://github.com/username/Asides/issues
+https://github.com/meltingmedia/Asides/issues

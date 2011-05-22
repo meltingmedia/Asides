@@ -27,15 +27,13 @@
  */
 $settings = array();
 
-/*
-$settings['gallery.'] = $modx->newObject('modSystemSetting');
-$settings['gallery.']->fromArray(array(
-    'key' => 'gallery.',
+$settings['asides.categoryId'] = $modx->newObject('modSystemSetting');
+$settings['asides.categoryId']->fromArray(array(
+    'key' => 'asides.categoryId',
     'value' => '',
     'xtype' => 'textfield',
-    'namespace' => 'gallery',
+    'namespace' => 'asides',
     'area' => '',
 ),'',true,true);
-*/
 
 return $settings;

@@ -26,5 +26,4 @@
  * @subpackage lexicon
  */
 
-$_lang['prop_asides.categoryId'] = 'Category ID';
-$_lang['prop_asides.categoryId_desc'] = 'The category ID where your aside chunks are.';
+$_lang['prop_asides.chunks_desc'] = 'Specify the TV containing your chunks list to be used as asides.';

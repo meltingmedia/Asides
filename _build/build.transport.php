@@ -86,6 +86,16 @@ if (!is_array($snippets)) {
     $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' snippets.');
 }
 
+$tvs = include $sources['data'].'transport.tvs.php';
+if (!is_array($tvs)) {
+    $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in TVs.');
+} else {
+    $category->addMany($tvs,'TemplateVars');
+    $modx->log(modX::LOG_LEVEL_INFO,'Added in '.count($tvs).' tvs.');
+    flush();
+    unset($tvs);
+}
+
 /* create category vehicle */
 $attr = array(
     xPDOTransport::UNIQUE_KEY => 'category',
@@ -104,10 +114,9 @@ $attr = array(
                     xPDOTransport::UPDATE_OBJECT => true,
                     xPDOTransport::UNIQUE_KEY => 'name',
                 ),
-                'Chunks' => array(
-                    xPDOTransport::PRESERVE_KEYS => false,
+                'TemplateVars' => array(
+                    xPDOTransport::PRESERVE_KEYS => true,
                     xPDOTransport::UPDATE_OBJECT => true,
-                    xPDOTransport::UNIQUE_KEY => 'name',
                 ),
             ),
         ),
@@ -116,10 +125,9 @@ $attr = array(
             xPDOTransport::UPDATE_OBJECT => true,
             xPDOTransport::UNIQUE_KEY => 'name',
         ),
-        'Chunks' => array (
-            xPDOTransport::PRESERVE_KEYS => false,
+        'TemplateVars' => array(
+            xPDOTransport::PRESERVE_KEYS => true,
             xPDOTransport::UPDATE_OBJECT => true,
-            xPDOTransport::UNIQUE_KEY => 'name',
         ),
     ),
 );
@@ -133,6 +141,17 @@ $vehicle->resolve('file',array(
 $vehicle->resolve('file',array(
     'source' => $sources['source_core'],
     'target' => "return MODX_CORE_PATH . 'components/';",
+));
+$vehicle->validate('php',array(
+    'source' => $sources['resolvers'] . 'paths.resolvers.php',
+));
+$vehicle->resolve('file',array(
+    'source' => $sources['data'] . 'input/checkboxSortable.php',
+    'target' => "return MODX_CORE_PATH . 'model/modx/processors/element/tv/renders/mgr/input/';",
+));
+$vehicle->resolve('file',array(
+    'source' => $sources['data'].'input/checkboxSortable.tpl',
+    'target' => "return MODX_MANAGER_PATH . 'templates/default/element/tv/renders/input/';",
 ));
 $builder->putVehicle($vehicle);
 
