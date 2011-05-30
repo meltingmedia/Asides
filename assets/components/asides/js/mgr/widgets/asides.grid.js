@@ -110,7 +110,7 @@ Asides.window.CreateAside = function(config) {
         title: _('asides.aside_create')
         ,id: this.ident
         ,height: 150
-        ,width: 475
+        ,width: 875
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/create'
         ,fields: [{
@@ -126,19 +126,7 @@ Asides.window.CreateAside = function(config) {
             ,id: 'asides-'+this.ident+'-description'
             ,width: 300
         },{
-            xtype: 'htmleditor'
-            ,fieldLabel: _('asides.aside.content')
-            ,name: 'snippet'
-            ,id: 'asides-'+this.ident+'-snippet'
-            ,width: 400
-            ,enableAlignments: true
-            ,enableColors: false
-            ,enableFont: false
-            ,enableFontSize: false
-            ,enableFormat: true
-            ,enableLinks: true
-            ,enableLists: true
-            ,enableSourceEdit: true
+            xtype: 'asides-rte'
         }]
     });
     Asides.window.CreateAside.superclass.constructor.call(this,config);
@@ -174,22 +162,40 @@ Asides.window.UpdateAside = function(config) {
             ,id: 'asides-'+this.ident+'-description'
             ,width: 300
         },{
-            xtype: 'htmleditor'
-            ,fieldLabel: _('asides.aside.content')
-            ,name: 'snippet'
-            ,id: 'asides-'+this.ident+'-snippet'
-            ,width: 400
-            ,enableAlignments: true
-            ,enableColors: false
-            ,enableFont: false
-            ,enableFontSize: false
-            ,enableFormat: true
-            ,enableLinks: true
-            ,enableLists: true
-            ,enableSourceEdit: true
+            xtype: 'asides-rte'
         }]
     });
     Asides.window.UpdateAside.superclass.constructor.call(this,config);
 };
 Ext.extend(Asides.window.UpdateAside,MODx.Window);
 Ext.reg('asides-window-aside-update',Asides.window.UpdateAside);
+
+
+// TinyMCE for Asides edition
+Asides.tinymce = function(config) {
+    config = config || {};
+    Ext.applyIf(config, {
+        name : 'asides_rte'
+        ,fieldLabel: _('asides.aside.content')
+        ,name: 'snippet'
+        ,id: 'asides-'+this.ident+'-snippet'
+        ,width: 800
+        ,tinymceSettings: {
+            theme: "advanced"
+            ,skin: "cirkuit"
+            //,plugins: "style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,noneditable,nonbreaking,xhtmlxtras,visualchars,media"
+            ,plugins: "style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,noneditable,nonbreaking,xhtmlxtras,visualchars,media,template"
+            ,theme_advanced_buttons1: "undo,redo,selectall,separator,nonbreaking,charmap,separator,image,modxlink,unlink,anchor,media,separator,fullscreen,code,help"
+            ,theme_advanced_buttons2: "bold,italic,underline,strikethrough,sub,sup,separator,bullist,numlist,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,styleselect,formatselect,separator"
+            //,theme_advanced_buttons3: "tablecontrols,template"
+            ,theme_advanced_toolbar_location: "top"
+            ,theme_advanced_toolbar_align: "left"
+            ,theme_advanced_statusbar_location: "bottom"
+            ,theme_advanced_resizing: false
+            ,extended_valid_elements: "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
+        }
+    });
+    Asides.tinymce.superclass.constructor.call(this, config);
+};
+Ext.extend(Asides.tinymce, Ext.ux.TinyMCE);
+Ext.reg('asides-rte', Asides.tinymce);
