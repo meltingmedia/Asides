@@ -110,7 +110,7 @@ Asides.window.CreateAside = function(config) {
         title: _('asides.aside_create')
         ,id: this.ident
         ,height: 150
-        //,width: 475
+        ,width: 500
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/create'
         ,fields: [{
@@ -118,18 +118,18 @@ Asides.window.CreateAside = function(config) {
             ,fieldLabel: _('name')
             ,name: 'name'
             ,id: 'asides-'+this.ident+'-name'
-            ,width: 300
+            ,width: 400
         },{
             xtype: 'textfield'
             ,fieldLabel: _('description')
             ,name: 'description'
             ,id: 'asides-'+this.ident+'-description'
-            ,width: 300
+            ,width: 400
         },{
             xtype: 'asides-rte'
             ,name: 'snippet'
             ,id: 'asides-'+this.ident+'-snippet'
-            //,width: 450
+            ,width: 400
         }]
     });
     Asides.window.CreateAside.superclass.constructor.call(this,config);
@@ -145,7 +145,7 @@ Asides.window.UpdateAside = function(config) {
         title: _('asides.aside_update')
         ,id: this.ident
         ,height: 150
-        //,width: 475
+        ,width: 500
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/update'
         ,fields: [{
@@ -157,18 +157,18 @@ Asides.window.UpdateAside = function(config) {
             ,fieldLabel: _('name')
             ,name: 'name'
             ,id: 'asides-'+this.ident+'-name'
-            ,width: 300
+            ,width: 400
         },{
             xtype: 'textfield'
             ,fieldLabel: _('description')
             ,name: 'description'
             ,id: 'asides-'+this.ident+'-description'
-            ,width: 300
+            ,width: 400
         },{
             xtype: 'asides-rte'
             ,name: 'snippet'
             ,id: 'asides-'+this.ident+'-snippet'
-            //,width: 450
+            ,width: 400
         }]
     });
     Asides.window.UpdateAside.superclass.constructor.call(this,config);
@@ -193,7 +193,7 @@ Asides.tinymce = function(config) {
             ,theme_advanced_toolbar_location: "top"
             ,theme_advanced_toolbar_align: "left"
             ,theme_advanced_statusbar_location: "bottom"
-            ,theme_advanced_resizing: true
+            ,theme_advanced_resizing: false
             ,extended_valid_elements: "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
         }
     });

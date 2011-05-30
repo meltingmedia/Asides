@@ -1,5 +1,9 @@
 Changelog for Asides.
 
+Asides 1.0.0-rc2
+==============
+- Added TinyMCE as default chunk editor (so now TinyMCE Extra is required).
+
 Asides 1.0.0-rc1
 ==============
 - Initial release.
