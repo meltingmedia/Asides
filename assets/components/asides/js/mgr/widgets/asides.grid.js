@@ -110,7 +110,7 @@ Asides.window.CreateAside = function(config) {
         title: _('asides.aside_create')
         ,id: this.ident
         ,height: 150
-        ,width: 875
+        //,width: 475
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/create'
         ,fields: [{
@@ -127,6 +127,9 @@ Asides.window.CreateAside = function(config) {
             ,width: 300
         },{
             xtype: 'asides-rte'
+            ,name: 'snippet'
+            ,id: 'asides-'+this.ident+'-snippet'
+            //,width: 450
         }]
     });
     Asides.window.CreateAside.superclass.constructor.call(this,config);
@@ -142,7 +145,7 @@ Asides.window.UpdateAside = function(config) {
         title: _('asides.aside_update')
         ,id: this.ident
         ,height: 150
-        ,width: 475
+        //,width: 475
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/update'
         ,fields: [{
@@ -163,6 +166,9 @@ Asides.window.UpdateAside = function(config) {
             ,width: 300
         },{
             xtype: 'asides-rte'
+            ,name: 'snippet'
+            ,id: 'asides-'+this.ident+'-snippet'
+            //,width: 450
         }]
     });
     Asides.window.UpdateAside.superclass.constructor.call(this,config);
@@ -177,21 +183,17 @@ Asides.tinymce = function(config) {
     Ext.applyIf(config, {
         name : 'asides_rte'
         ,fieldLabel: _('asides.aside.content')
-        ,name: 'snippet'
-        ,id: 'asides-'+this.ident+'-snippet'
-        ,width: 800
         ,tinymceSettings: {
             theme: "advanced"
             ,skin: "cirkuit"
-            //,plugins: "style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,noneditable,nonbreaking,xhtmlxtras,visualchars,media"
             ,plugins: "style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,noneditable,nonbreaking,xhtmlxtras,visualchars,media,template"
             ,theme_advanced_buttons1: "undo,redo,selectall,separator,nonbreaking,charmap,separator,image,modxlink,unlink,anchor,media,separator,fullscreen,code,help"
-            ,theme_advanced_buttons2: "bold,italic,underline,strikethrough,sub,sup,separator,bullist,numlist,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,styleselect,formatselect,separator"
-            //,theme_advanced_buttons3: "tablecontrols,template"
+            ,theme_advanced_buttons2: "bold,italic,underline,strikethrough,sub,sup,separator,bullist,numlist,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,template"
+            ,theme_advanced_buttons3: "styleselect,formatselect"
             ,theme_advanced_toolbar_location: "top"
             ,theme_advanced_toolbar_align: "left"
             ,theme_advanced_statusbar_location: "bottom"
-            ,theme_advanced_resizing: false
+            ,theme_advanced_resizing: true
             ,extended_valid_elements: "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
         }
     });
