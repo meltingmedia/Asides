@@ -25,18 +25,18 @@
  * @package asides
  * @subpackage controllers
  */
-$modx->regClientCSS($modExtra->config['cssUrl'].'mgr.css');
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/asides.js');
+$modx->regClientCSS($asides->config['cssUrl'].'mgr.css');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/asides.js');
 
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/jscripts/tiny_mce/tiny_mce.js');
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/xconfig.js');
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/tiny.min.js');
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'Ext.ux.TinyMCE.min.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/Ext.ux.TinyMCE.min.js');
 
 $modx->regClientStartupHTMLBlock('<script type="text/javascript">
 Ext.onReady(function() {
-    Asides.config = '.$modx->toJSON($modExtra->config).';
-    Asides.config.connector_url = "'.$modExtra->config['connectorUrl'].'";
+    Asides.config = '.$modx->toJSON($asides->config).';
+    Asides.config.connector_url = "'.$asides->config['connectorUrl'].'";
     Asides.action = "'.(!empty($_REQUEST['a']) ? $_REQUEST['a'] : 0).'";
 });
 </script>');

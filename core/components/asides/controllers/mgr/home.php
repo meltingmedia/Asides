@@ -25,9 +25,9 @@
  * @package asides
  * @subpackage controllers
  */
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/widgets/asides.grid.js');
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/widgets/home.panel.js');
-$modx->regClientStartupScript($modExtra->config['jsUrl'].'mgr/sections/home.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/asides.grid.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/home.panel.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/home.js');
 
 $hasPerm = $modx->hasPermission('edit_locked');
 $modx->regClientStartupHTMLBlock('<script type="text/javascript">var editLocked = '.($hasPerm ? 1 : 0).';</script>');

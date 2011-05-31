@@ -64,7 +64,7 @@ class AsidesControllerRequest extends modRequest {
      */
     private function _respond() {
         $modx =& $this->modx;
-        $modExtra =& $this->Asides;
+        $asides =& $this->Asides;
 
         $viewHeader = include $this->Asides->config['corePath'].'controllers/mgr/header.php';
 

@@ -24,5 +24,5 @@
  * @subpackage controllers
  */
 require_once dirname(dirname(__FILE__)).'/model/asides/asides.class.php';
-$modextra = new Asides($modx);
-return $modextra->initialize('mgr');
+$asides = new Asides($modx);
+return $asides->initialize('mgr');
