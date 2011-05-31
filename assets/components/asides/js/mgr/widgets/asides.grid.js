@@ -36,8 +36,7 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
 
     ,getMenu: function() {
         var m = [];
-        // @TODO: check if user have edit_locked right
-        if (this.menu.record.locked != 1) {
+        if (this.menu.record.locked != 1 || editLocked == 1 ) {
             m.push({
                 text: _('asides.aside_update')
                 ,handler: this.updateAside
