@@ -27,7 +27,7 @@ foreach ($ar_chunks as $chunk) {
     }
 }
 
-$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n");
+$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n\n");
 $output = implode($list,$outputSeparator);
 
 return $output;
