@@ -1,4 +1,4 @@
-## Asides
+# Asides
 
 Asides is a MODX Extra allowing you (and your clients) to easily manage "asides" on a website.
 You'll be able to quickly create chunks without having access to the Elements tab (and even without the new_chunk
@@ -13,7 +13,7 @@ Revolution 2.0.x.
 
 * Install via package manager.
 * Setup the asides.categoryId system setting to fit your needs (indicates the category ID where your chunks to be used
-as asides will be stored).
+  as asides will be stored).
 * set aside TV input option value at `@EVAL return $modx->runSnippet('getAside');`
 * allow aside TV to access your desired templates
 * in those templates, set `[[showAside? &chunks=``[[*aside]]``]]`
@@ -24,10 +24,15 @@ Note: setting "Lock chunk for editing" as activated prevents the chunk edition f
 ## Credits
 
 This Extra is base on some MODX community members, see :
+
 * http://wiki.modxcms.com/index.php/Create_TV-Based_Chunks
+
 It also makes use of MadeMyDay's sortable checkbox TV :
+
 * https://github.com/MadeMyDay/checkboxSortable
+
 This Extra is, of course, based on the exellent modExtra from Shaun McCormick :
+
 * https://github.com/splittingred/modExtra
 
 ## Copyright Information
