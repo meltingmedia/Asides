@@ -10,6 +10,9 @@
 if (!isset($scriptProperties['chunks'])) {
     return '';
 }
+$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n\n");
+$wrapper = !empty($wrapper) ? $wrapper : '';
+$toPlaceholder = $modx->getOption('toPlaceholder',$scriptProperties,false);
 
 $ar_chunks = explode('||',$chunks);
 $ar_chunks = array_unique($ar_chunks);
@@ -19,15 +22,27 @@ $list = array();
 
 foreach ($ar_chunks as $chunk) {
     if ($chunk != '') {
-        $c = $modx->getChunk($chunk);
+        if ($wrapper) {
+            // we are wrapping the chunk with another chunk (layout purpose)
+            $c = $modx->getChunk($wrapper,array('wrapper' => $modx->getChunk($chunk)));
+        } else {
+            // just get the chunk
+            $c = $modx->getChunk($chunk);
+        }
+
         if ($c) {
             $list[] = $c;
         }
-        //$output .= $c;
     }
 }
 
-$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n\n");
+
 $output = implode($list,$outputSeparator);
+
+if (!empty($toPlaceholder)) {
+    // if using a placeholder, output nothing and set output to specified placeholder
+    $modx->setPlaceholder($toPlaceholder,$output);
+    return '';
+}
 
 return $output;

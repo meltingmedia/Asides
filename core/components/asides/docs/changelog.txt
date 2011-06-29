@@ -1,9 +1,17 @@
+--------------------------------------------------------------------------------
 Changelog for Asides.
+--------------------------------------------------------------------------------
 
-Asides 1.0.0-rc2
-==============
-- Added TinyMCE as default chunk editor (so now TinyMCE Extra is required).
+2011/06/29: 1.0.0-rc3
+========================================================
+- Added some parameters to showAside snippet:
+  &wrapper, &toPlaceholder
 
-Asides 1.0.0-rc1
-==============
+2011/05/30: 1.0.0-rc2
+========================================================
+- Added TinyMCE as default chunk editor
+ (so now TinyMCE Extra is required).
+
+2011/05/23: 1.0.0-rc1
+========================================================
 - Initial release.

@@ -39,6 +39,7 @@ $tvs[1]->fromArray(array(
     'rank' => 0,
     'default_text' => '@INHERIT',
     //'elements' => "@EVAL return $modx->runSnippet('getAside');",
+    //'elements' => "@SELECT name FROM modx_site_htmlsnippets WHERE category = 3;",
 ),'',true,true);
 
 return $tvs;
