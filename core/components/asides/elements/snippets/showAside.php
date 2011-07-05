@@ -24,7 +24,12 @@ foreach ($ar_chunks as $chunk) {
     if ($chunk != '') {
         if ($wrapper) {
             // we are wrapping the chunk with another chunk (layout purpose)
-            $c = $modx->getChunk($wrapper,array('wrapper' => $modx->getChunk($chunk)));
+            $chunkobj = $modx->getObject('modChunk',array('name'=>$chunk));
+            $chunkid = $chunkobj->get('id');
+            $c = $modx->getChunk($wrapper,array(
+                                               'wrapper' => $modx->getChunk($chunk),
+                                                'id' => $chunkid,
+                                          ));
         } else {
             // just get the chunk
             $c = $modx->getChunk($chunk);

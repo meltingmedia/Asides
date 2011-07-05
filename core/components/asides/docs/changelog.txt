@@ -2,6 +2,11 @@
 Changelog for Asides.
 --------------------------------------------------------------------------------
 
+2011/xx/xx: 1.0.0-pl
+========================================================
+- Added id placeholder for the wrapper, to allow a better
+  css styling/targeting.
+
 2011/06/29: 1.0.0-rc3
 ========================================================
 - Added some parameters to showAside snippet:

@@ -9,12 +9,14 @@ right).
 Asides is developped under MODX Revolution 2.1.0-rc4 & MySQL, but i *should* work smoothly with MsSQL or
 Revolution 2.0.x.
 
+NOTE : Asides requires TinyMCE Extra for MODX Revolution.
+
 ## Configuration
 
 * Install via package manager.
 * Setup the asides.categoryId system setting to fit your needs (indicates the category ID where your chunks to be used
   as asides will be stored).
-* set aside TV input option value at `@EVAL return $modx->runSnippet('getAside');`
+* set aside TV input option value at `@EVAL return $modx->runSnippet('getAside');` or you can also use `@SELECT name FROM modx_site_htmlsnippets WHERE category = 3` (where 3 is the category ID where your chunks will belong)
 * allow aside TV to access your desired templates
 * in those templates, set `[[showAside? &chunks=``[[*aside]]``]]`
 * you now should be good to go!
