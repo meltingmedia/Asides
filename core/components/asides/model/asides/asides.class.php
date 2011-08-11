@@ -79,4 +79,55 @@ class Asides {
             break;
         }
     }
+
+    /**
+     * Check for resources using a given aside
+     *
+     * @access public
+     * @param string $aside The aside (chunk) object
+     */
+    public function inResource($aside) {
+        // grab the TV
+        $asideTV = $this->modx->getObject('modTemplateVar',array('name' => 'aside'));
+        $asideTVid = $asideTV->get('id');
+
+        // target the modTemplates with this TV
+        $asideTpls = $this->modx->getCollection('modTemplateVarTemplate',array('tmplvarid' => $asideTVid));
+        $activeTpls = array();
+        foreach ($asideTpls as $tpl) {
+            array_push($activeTpls,$tpl->get('templateid'));
+        }
+
+        // get the modResources using those tpls
+        $res = array();
+        foreach ($activeTpls as $activeTpl) {
+            $resTargets = $this->modx->getCollection('modResource',array('template' => $activeTpl));
+            foreach ($resTargets as $resTarget) {
+                array_push($res,$resTarget->get('id'));
+            }
+        }
+
+        // get the value of the aside TV in those resources
+        $matches = array();
+        foreach ($res as $resId) {
+            $resource = $this->modx->getObject('modResource',$resId);
+            $tvValue = $resource->getTVValue('aside');
+            $values = explode('||',$tvValue);
+            // check if the chunk name is in
+            if(in_array($aside->get('name'),$values)) {
+                array_push($matches,$resource->get('id'));
+            }
+        }
+
+        $o = '';
+        if ($matches) {
+            foreach ($matches as $match) {
+                $o .= $match.',';
+                //$this->modx->log(modX::LOG_LEVEL_ERROR,'we got a match');
+            }
+            //return $this->modx->error->failure($this->modx->lexicon('asides.aside_err_remove_in_use',array('ids' => trim($o,','))));
+        }
+
+        return trim($o,',');
+    }
 }
