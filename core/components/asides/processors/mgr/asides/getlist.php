@@ -30,8 +30,19 @@ $start = $modx->getOption('start',$_REQUEST,0);
 $limit = $modx->getOption('limit',$_REQUEST,20);
 $sort = $modx->getOption('sort',$_REQUEST,'name');
 $dir = $modx->getOption('dir',$_REQUEST,'ASC');
+$query = $modx->getOption('query',$scriptProperties,'');
 
 $c = $modx->newQuery('modChunk', array('category' => $modx->getOption('asides.categoryId')));
+
+if (!empty($query)) {
+    $c->where(array(
+        'name:LIKE' => '%'.$query.'%',
+        /*'OR:description:LIKE' => '%'.$query.'%',
+        'OR:city:LIKE' => '%'.$query.'%',
+        'OR:date:LIKE' => '%'.$query.'%',*/
+    ));
+}
+
 $count = $modx->getCount('modChunk',$c);
 
 $c->sortby($sort,$dir);
