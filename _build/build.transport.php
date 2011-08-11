@@ -31,13 +31,13 @@ $mtime = $mtime[1] + $mtime[0];
 $tstart = $mtime;
 set_time_limit(0);
 
-/* define package */
+// define package
 define('PKG_NAME','Asides');
 define('PKG_NAME_LOWER',strtolower(PKG_NAME));
 define('PKG_VERSION','1.0.0');
 define('PKG_RELEASE','rc3');
 
-/* define sources */
+// define sources
 $root = dirname(dirname(__FILE__)).'/';
 $sources = array(
     'root' => $root,
@@ -55,14 +55,14 @@ $sources = array(
 );
 unset($root);
 
-/* override with your own defines here (see build.config.sample.php) */
+// override with your own defines here (see build.config.sample.php)
 require_once $sources['build'] . '/build.config.php';
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
 require_once $sources['build'] . '/includes/functions.php';
 
 $modx= new modX();
 $modx->initialize('mgr');
-echo '<pre>'; /* used for nice formatting of log messages */
+echo '<pre>'; // used for nice formatting of log messages
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget('ECHO');
 
@@ -72,12 +72,12 @@ $builder->createPackage(PKG_NAME_LOWER,PKG_VERSION,PKG_RELEASE);
 $builder->registerNamespace(PKG_NAME_LOWER,false,true,'{core_path}components/'.PKG_NAME_LOWER.'/');
 $modx->log(modX::LOG_LEVEL_INFO,'Created Transport Package and Namespace.');
 
-/* create category */
+// create category
 $category= $modx->newObject('modCategory');
 $category->set('id',1);
 $category->set('category',PKG_NAME);
 
-/* add snippets */
+// add snippets
 $snippets = include $sources['data'].'transport.snippets.php';
 if (!is_array($snippets)) {
     $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in snippets.');
@@ -85,7 +85,7 @@ if (!is_array($snippets)) {
     $category->addMany($snippets);
     $modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' snippets.');
 }
-
+// add TVs
 $tvs = include $sources['data'].'transport.tvs.php';
 if (!is_array($tvs)) {
     $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in TVs.');
@@ -96,7 +96,7 @@ if (!is_array($tvs)) {
     unset($tvs);
 }
 
-/* create category vehicle */
+// create category vehicle
 $attr = array(
     xPDOTransport::UNIQUE_KEY => 'category',
     xPDOTransport::PRESERVE_KEYS => false,
@@ -155,7 +155,7 @@ $vehicle->resolve('file',array(
 ));
 $builder->putVehicle($vehicle);
 
-/* load system settings */
+// load system settings
 $settings = include $sources['data'].'transport.settings.php';
 if (!is_array($settings)) {
     $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in settings.');
@@ -173,7 +173,7 @@ if (!is_array($settings)) {
 }
 unset($settings,$setting,$attributes);
 
-/* load menu */
+// load menu
 $menu = include $sources['data'].'transport.menu.php';
 if (empty($menu)) {
     $modx->log(modX::LOG_LEVEL_ERROR,'Could not package in menu.');
@@ -200,7 +200,7 @@ if (empty($menu)) {
 }
 unset($vehicle,$menu);
 
-/* now pack in the license file, readme and setup options */
+// now pack in the license file, readme and setup options
 $builder->setPackageAttributes(array(
     'license' => file_get_contents($sources['docs'] . 'license.txt'),
     'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
@@ -210,7 +210,7 @@ $builder->setPackageAttributes(array(
 ));
 $modx->log(modX::LOG_LEVEL_INFO,'Added package attributes and setup options.');
 
-/* zip up package */
+// zip up package
 $modx->log(modX::LOG_LEVEL_INFO,'Packing up transport package zip...');
 $builder->pack();
 

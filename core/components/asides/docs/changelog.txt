@@ -4,6 +4,7 @@ Changelog for Asides.
 
 2011/xx/xx: 1.0.0-pl
 ========================================================
+- Ensure an aside isn't in use before deletion
 - Added id placeholder for the wrapper, to allow a better
   css styling/targeting.
 

@@ -36,6 +36,7 @@ $_lang['asides.aside_err_ae'] = 'Un module portant ce nom existe déjà.';
 $_lang['asides.aside_err_nf'] = 'Module non trouvé.';
 $_lang['asides.aside_err_ns'] = 'Module non indiqué.';
 $_lang['asides.aside_err_remove'] = 'Une erreur est survenue lors de la suppression du module.';
+$_lang['asides.aside_err_remove_in_use'] = 'Ce module est toujours utilisé dans les ressources suivantes :<br /><br />[[+ids]].<br /><br />Veuillez retirer ce module des ressources avant de le supprimer.';
 $_lang['asides.aside_err_save'] = 'Une erreur est survenue lors de la sauvegarde du module.';
 $_lang['asides.aside_remove'] = 'Supprimer ce module';
 $_lang['asides.aside_remove_confirm'] = 'Êtes-vous sûr de vouloir supprimer ce module ?';
