@@ -37,9 +37,8 @@ $c = $modx->newQuery('modChunk', array('category' => $modx->getOption('asides.ca
 if (!empty($query)) {
     $c->where(array(
         'name:LIKE' => '%'.$query.'%',
-        /*'OR:description:LIKE' => '%'.$query.'%',
-        'OR:city:LIKE' => '%'.$query.'%',
-        'OR:date:LIKE' => '%'.$query.'%',*/
+        'OR:description:LIKE' => '%'.$query.'%',
+        'OR:snippet:LIKE' => '%'.$query.'%',
     ));
 }
 
