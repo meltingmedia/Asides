@@ -26,4 +26,7 @@
  * @subpackage lexicon
  */
 
-$_lang['prop_asides.chunks_desc'] = 'Specify the TV containing your chunks list to be used as asides.';
+$_lang['prop_asides.chunks_desc'] = 'Specify the TV containing your chunks list to be used as asides (should be [[*aside]] by default).';
+$_lang['prop_asides.wrapper_desc'] = 'A chunk to wrap each result in.';
+$_lang['prop_asides.outputseparator_desc'] = 'Default to "\n".';
+$_lang['prop_asides.toplaceholder_desc'] = 'Output the results to the given placeholder.';

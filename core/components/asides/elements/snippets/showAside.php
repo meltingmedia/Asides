@@ -10,7 +10,7 @@
 if (!isset($scriptProperties['chunks'])) {
     return '';
 }
-$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n\n");
+$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n");
 $wrapper = !empty($wrapper) ? $wrapper : '';
 $toPlaceholder = $modx->getOption('toPlaceholder',$scriptProperties,false);
 

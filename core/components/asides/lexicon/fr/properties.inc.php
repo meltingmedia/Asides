@@ -26,4 +26,7 @@
  * @subpackage lexicon
  */
 
-$_lang['prop_asides.chunks_desc'] = 'Indiquez la variable de modèle contenant la liste de vos chunks à utiliser comme modules.';
+$_lang['prop_asides.chunks_desc'] = 'Indiquez la variable de modèle contenant la liste de vos chunks à utiliser comme modules ([[*aside]] par défaut).';
+$_lang['prop_asides.wrapper_desc'] = 'Un chunk dans lequel afficher chaque résultat.';
+$_lang['prop_asides.outputseparator_desc'] = '"\n" par défaut.';
+$_lang['prop_asides.toplaceholder_desc'] = 'Affiche les résultats dans le placeholder indiqué.';

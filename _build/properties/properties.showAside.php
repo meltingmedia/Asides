@@ -34,6 +34,30 @@ $properties = array(
         'value' => '',
         'lexicon' => 'asides:properties',
     )
+    ,array(
+        'name' => 'wrapper',
+        'desc' => 'prop_asides.wrapper_desc',
+        'type' => 'textfield',
+        'options' => '',
+        'value' => '',
+        'lexicon' => 'asides:properties',
+    )
+    ,array(
+        'name' => 'outputSeparator',
+        'desc' => 'prop_asides.outputseparator_desc',
+        'type' => 'textfield',
+        'options' => '',
+        'value' => '',
+        'lexicon' => 'asides:properties',
+    )
+    ,array(
+        'name' => 'toPlaceholder',
+        'desc' => 'prop_asides.toplaceholder_desc',
+        'type' => 'textfield',
+        'options' => '',
+        'value' => '',
+        'lexicon' => 'asides:properties',
+    )
 );
 
 return $properties;

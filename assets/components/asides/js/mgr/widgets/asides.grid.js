@@ -13,15 +13,12 @@ Asides.grid.Items = function(config) {
         ,columns: [{
             header: _('name')
             ,dataIndex: 'name'
-            //,width: 200
         },{
             header: _('description')
             ,dataIndex: 'description'
-            //,width: 250
         },{
             header: _('locked')
             ,dataIndex: 'locked'
-            //,width: 70
         }]
         ,tbar: [{
             xtype: 'textfield'
@@ -176,6 +173,8 @@ Asides.window.CreateAside = function(config) {
         ,id: this.ident
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/create'
+        ,collapsible: false
+        ,width: '650'
         ,fields: [{
             xtype: 'textfield'
             ,fieldLabel: _('name')
@@ -209,6 +208,8 @@ Asides.window.UpdateAside = function(config) {
         ,id: this.ident
         ,url: Asides.config.connector_url
         ,action: 'mgr/asides/update'
+        ,collapsible: false
+        ,width: '650'
         ,fields: [{
             xtype: 'hidden'
             ,name: 'id'

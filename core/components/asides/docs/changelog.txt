@@ -2,8 +2,10 @@
 Changelog for Asides.
 --------------------------------------------------------------------------------
 
-2011/xx/xx: 1.0.0-pl
+2011/08/12: 1.0.0-pl
 ========================================================
+- Added an option to remove an aside from any resource
+  without deleting the aside (chunk)
 - Ensure an aside isn't in use before deletion
 - Added id placeholder for the wrapper, to allow a better
   css styling/targeting.
