@@ -81,7 +81,7 @@ class Asides {
     }
 
     /**
-     * Check for resources using a given aside
+     * Returns a string of resources using a given aside
      *
      * @access public
      * @param string $aside The aside (chunk) object
@@ -123,9 +123,7 @@ class Asides {
         if ($matches) {
             foreach ($matches as $match) {
                 $o .= $match.',';
-                //$this->modx->log(modX::LOG_LEVEL_ERROR,'we got a match');
             }
-            //return $this->modx->error->failure($this->modx->lexicon('asides.aside_err_remove_in_use',array('ids' => trim($o,','))));
         }
 
         return trim($o,',');

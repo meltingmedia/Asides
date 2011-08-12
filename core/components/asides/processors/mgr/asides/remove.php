@@ -38,5 +38,9 @@ if ($o) {
     return $modx->error->failure($modx->lexicon('asides.aside_err_remove_in_use',array('ids' => $o)));
 }
 
+if ($aside->remove() == false) {
+    return $modx->error->failure($modx->lexicon('asides.aside_err_remove'));
+}
+
 // output
 return $modx->error->success('',$aside);
