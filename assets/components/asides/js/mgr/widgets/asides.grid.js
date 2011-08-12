@@ -89,6 +89,11 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
             });
             m.push('-');
             m.push({
+                text: _('asides.aside_clear')
+                ,handler: this.clearAside
+            });
+            m.push('-');
+            m.push({
                 text: _('asides.aside_remove')
                 ,handler: this.removeAside
             });
@@ -125,7 +130,22 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
         this.windows.updateAside.fp.getForm().setValues(r);
         this.windows.updateAside.show(e.target);
     }
+    ,clearAside: function(btn,e) {
+        if (!this.menu.record) return false;
 
+        MODx.msg.confirm({
+            title: _('asides.aside_clear')
+            ,text: _('asides.aside_clear_confirm')
+            ,url: this.config.url
+            ,params: {
+                action: 'mgr/asides/clear'
+                ,id: this.menu.record.id
+            }
+            ,listeners: {
+                'success': {fn:function(r) { this.refresh(); },scope:this}
+            }
+        });
+    }
     ,removeAside: function(btn,e) {
         if (!this.menu.record) return false;
 

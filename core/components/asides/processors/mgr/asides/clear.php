@@ -20,24 +20,25 @@
  * @package asides
  */
 /**
- * Update an aside chunk
+ * Remove an aside chunk from any resource (clears its name from the aside TV).
  *
  * @package asides
  * @subpackage processors
  */
 
+$Asides = $modx->getService('asides','Asides',$modx->getOption('asides.core_path',null,$modx->getOption('core_path').'components/asides/').'model/asides/',$scriptProperties);
+if (!($Asides instanceof Asides)) return '';
+
 if (empty($scriptProperties['id'])) return $modx->error->failure($modx->lexicon('asides.aside_err_ns'));
 $aside = $modx->getObject('modChunk',$scriptProperties['id']);
 if (!$aside) return $modx->error->failure($modx->lexicon('asides.aside_err_nf'));
 
-$aside->fromArray($scriptProperties);
-
-if ($aside->save() == false) {
-    return $modx->error->failure($modx->lexicon('asides.aside_err_save'));
+// grabs the resources where this aside is
+$resources = $Asides->inResource($aside);
+if (!$resources) {
+    return $modx->error->failure($modx->lexicon('asides.aside_err_remove_not_in_use'));
 }
+$Asides->cleanAside($aside->get('name'), $resources);
 
 // output
-$asideArray = $aside->toArray('',true);
-
-//@TODO: optimum cache clearing
-return $modx->error->success('',$asideArray);
+return $modx->error->success('',$aside);

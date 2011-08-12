@@ -84,12 +84,17 @@ class Asides {
      * Returns a string of resources using a given aside
      *
      * @access public
-     * @param string $aside The aside (chunk) object
+     * @param array $aside The aside (chunk) object
      */
     public function inResource($aside) {
         // grab the TV
         $asideTV = $this->modx->getObject('modTemplateVar',array('name' => 'aside'));
-        $asideTVid = $asideTV->get('id');
+        $asideTVid = '';
+        if ($asideTV) {
+            $asideTVid = $asideTV->get('id');
+        } else {
+            //@TODO: what if it's been renamed ?
+        }
 
         // target the modTemplates with this TV
         $asideTpls = $this->modx->getCollection('modTemplateVarTemplate',array('tmplvarid' => $asideTVid));
@@ -127,5 +132,26 @@ class Asides {
         }
 
         return trim($o,',');
+    }
+
+    /**
+     * Removes an aside from any existing resource using it
+     *
+     * @acces public
+     * @param string $aside the aside (chunk) name
+     * @param string $ids a list of comma separated ids using this aside
+     */
+    public function cleanAside($aside, $ids) {
+        $resIds = explode(',',$ids);
+        $tv = $this->modx->getObject('modTemplateVar',array('name' => 'aside'));
+        //@TODO: what if the tv has been renamed ?
+        foreach ($resIds as $resourceId) {
+            $tvValue = $this->modx->getObject('modTemplateVarResource',array('tmplvarid' => $tv->get('id'), 'contentid' => $resourceId));
+            $value = str_replace($aside,'',$tvValue->get('value'));
+            $value = str_replace('||||','||',$value);
+            $value = trim($value,'||');
+            $tv->setValue($resourceId,$value);
+            $tv->save();
+        }
     }
 }

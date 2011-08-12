@@ -25,7 +25,8 @@
  * @package asides
  * @subpackage controllers
  */
-$modx->regClientCSS($asides->config['cssUrl'].'mgr.css');
+
+//$modx->regClientCSS($asides->config['cssUrl'].'mgr.css');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/asides.js');
 
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/jscripts/tiny_mce/tiny_mce.js');
@@ -40,5 +41,6 @@ Ext.onReady(function() {
     Asides.action = "'.(!empty($_REQUEST['a']) ? $_REQUEST['a'] : 0).'";
 });
 </script>');
+//$modx->loadRichTextEditor();
 
 return '';
