@@ -28,7 +28,7 @@
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/asides.grid.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/home.panel.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/home.js');
-$asides->loadRichTextEditor();
+//$asides->loadRichTextEditor();
 
 $hasPerm = $modx->hasPermission('edit_locked');
 $modx->regClientStartupHTMLBlock('<script type="text/javascript">
