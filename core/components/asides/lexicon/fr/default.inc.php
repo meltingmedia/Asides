@@ -44,6 +44,8 @@ $_lang['asides.menu'] = 'Asides';
 $_lang['asides.menu_desc'] = 'Gérez vos « modules » de colonne';
 $_lang['asides.intro_msg'] = 'Gérez vos « modules » de colonne.';
 $_lang['asides.items'] = 'Asides';
+$_lang['asides.search'] = 'Rechercher';
+$_lang['asides.search_clear'] = 'Effacer les filtres';
 
 // sortable check box TV
 $_lang['cbs_name'] = 'Nom';

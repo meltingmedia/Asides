@@ -23,7 +23,7 @@ Asides.grid.Items = function(config) {
         ,tbar: [{
             xtype: 'textfield'
             ,id: 'asides-search-filter'
-            ,emptyText: 'Search…'
+            ,emptyText: _('asides.search')+'…'
             ,listeners: {
                 'change': {fn:this.search,scope:this}
                 ,'render': {fn: function(cmp) {
@@ -44,7 +44,7 @@ Asides.grid.Items = function(config) {
             xtype: 'button'
             ,id: 'asides-search-clear'
             ,itemId: 'clear'
-            ,text: 'Clear search'
+            ,text: _('asides.search_clear')
             ,listeners: {
                 'click': {fn: this.clearFilter, scope: this}
             }
@@ -120,6 +120,12 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
                 ,record: r
                 ,listeners: {
                     'success': {fn:function() { this.refresh(); },scope:this}
+                    /*,'activate': {
+                        fn:function() {
+                            //console.log('active');
+                            MODx.loadRTE('ta');
+                        }
+                    }*/
                 }
             });
         }
@@ -228,8 +234,12 @@ Asides.window.UpdateAside = function(config) {
             ,anchor: '90%'
         },{
             xtype: 'asides-rte'
+            //xtype: 'tinymce'
+            //xtype: 'htmleditor'
+            //xtype: 'textarea'
             ,name: 'snippet'
             ,id: 'asides-'+this.ident+'-snippet'
+            //,id: 'ta'
             ,anchor: '90%'
         }]
     });

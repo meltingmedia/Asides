@@ -116,7 +116,8 @@ $attr = array(
                 ),
                 'TemplateVars' => array(
                     xPDOTransport::PRESERVE_KEYS => true,
-                    xPDOTransport::UPDATE_OBJECT => true,
+                    xPDOTransport::UPDATE_OBJECT => false,
+                    //xPDOTransport::UPDATE_OBJECT => true,
                 ),
             ),
         ),

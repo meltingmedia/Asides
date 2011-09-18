@@ -29,10 +29,10 @@
 //$modx->regClientCSS($asides->config['cssUrl'].'mgr.css');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/asides.js');
 
-$modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/jscripts/tiny_mce/tiny_mce.js');
+/*$modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/jscripts/tiny_mce/tiny_mce.js');
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/xconfig.js');
 $modx->regClientStartupScript($modx->config['assets_url'].'components/tinymce/tiny.min.js');
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/Ext.ux.TinyMCE.min.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/Ext.ux.TinyMCE.min.js');*/
 
 $modx->regClientStartupHTMLBlock('<script type="text/javascript">
 Ext.onReady(function() {

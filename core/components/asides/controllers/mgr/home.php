@@ -28,9 +28,14 @@
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/asides.grid.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/home.panel.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/home.js');
+$asides->loadRichTextEditor();
 
 $hasPerm = $modx->hasPermission('edit_locked');
-$modx->regClientStartupHTMLBlock('<script type="text/javascript">var editLocked = '.($hasPerm ? 1 : 0).';</script>');
+$modx->regClientStartupHTMLBlock('<script type="text/javascript">
+var editLocked = '.($hasPerm ? 1 : 0).';
+/*Ext.onReady(function() {
+    MODx.loadRTE("ta");
+});*/</script>');
 
 $output = '<div id="asides-panel-home-div"></div>';
 

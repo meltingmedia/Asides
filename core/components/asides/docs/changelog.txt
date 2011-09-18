@@ -2,6 +2,13 @@
 Changelog for Asides.
 --------------------------------------------------------------------------------
 
+2011/09/xx: 1.0.1-pl
+========================================================
+- Added i18n for the search widget (on the grid) + clear
+  filters input
+- Fixed issue where upgrading causes to reset the input
+  option values
+
 2011/08/12: 1.0.0-pl
 ========================================================
 - Added an option to remove an aside from any resource

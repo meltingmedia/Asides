@@ -44,6 +44,8 @@ $_lang['asides.menu'] = 'Asides';
 $_lang['asides.menu_desc'] = 'Manage your asides.';
 $_lang['asides.intro_msg'] = 'Manage your asides.';
 $_lang['asides.items'] = 'Asides';
+$_lang['asides.search'] = 'Search';
+$_lang['asides.search_clear'] = 'Clear filters';
 
 // sortable check box TV
 $_lang['cbs_name'] = 'Name';

@@ -154,4 +154,35 @@ class Asides {
             $tv->save();
         }
     }
+    /**
+     * Initialize a RichText Editor, if set
+     *
+     * @return void
+     */
+/*    public function loadRichTextEditor() {
+        // register JS scripts
+        $rte = $this->modx->getOption('which_editor');
+        //$this->modx->log(modX::LOG_LEVEL_ERROR, $this->modx->getOption('which_editor'));
+        $this->modx->setPlaceholder('which_editor', $rte);
+        // Set which RTE if not core
+        //if ($this->modx->context->getOption('use_editor', false, $this->modx->_userConfig) && !empty($rte)) {
+        if (!empty($rte)) {
+            // invoke OnRichTextEditorRegister event
+            $textEditors = $this->modx->invokeEvent('OnRichTextEditorRegister');
+            $this->modx->setPlaceholder('text_editors', $textEditors);
+
+            $this->modx->rteFields = array('ta');
+            $this->modx->setPlaceholder('replace_richtexteditor', $this->rteFields);
+
+            // invoke OnRichTextEditorInit event
+            $onRichTextEditorInit = $this->modx->invokeEvent('OnRichTextEditorInit', array(
+                'editor' => $rte,
+                'elements' => $this->modx->rteFields,
+            ));
+            if (is_array($onRichTextEditorInit)) {
+                $onRichTextEditorInit = implode('', $onRichTextEditorInit);
+                $this->modx->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
+            }
+        }
+    }*/
 }
