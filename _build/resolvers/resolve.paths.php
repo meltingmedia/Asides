@@ -46,11 +46,11 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_UPGRADE:
             $modx =& $object->xpdo;
 
-            /* setup paths */
+            // setup paths
             createSetting($modx,'core_path',$modx->getOption('core_path').'components/asides/');
             createSetting($modx,'assets_path',$modx->getOption('assets_path').'components/asides/');
 
-            /* setup urls */
+            // setup urls
             createSetting($modx,'assets_url',$modx->getOption('assets_url').'components/asides/');
         break;
     }

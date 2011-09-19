@@ -27,14 +27,17 @@
  */
 
 if (empty($scriptProperties['id'])) return $modx->error->failure($modx->lexicon('asides.aside_err_ns'));
-$aside = $modx->getObject('modChunk',$scriptProperties['id']);
+$aside = $modx->getObject('modChunk', $scriptProperties['id']);
 if (!$aside) return $modx->error->failure($modx->lexicon('asides.aside_err_nf'));
 
 $aside->fromArray($scriptProperties);
-$aside->setProperties(array(
-                           'before' => $scriptProperties['before'],
-                           'after' => $scriptProperties['after'],
-));
+// adding PS if set/edited
+if($scriptProperties['before'] || $scriptProperties['after']) {
+    $aside->setProperties(array(
+                               'before' => $scriptProperties['before'],
+                               'after' => $scriptProperties['after'],
+    ));
+}
 
 if ($aside->save() == false) {
     return $modx->error->failure($modx->lexicon('asides.aside_err_save'));

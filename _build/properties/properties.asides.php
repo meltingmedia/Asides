@@ -27,8 +27,8 @@
  */
 $properties = array(
     array(
-        'name' => 'chunks',
-        'desc' => 'prop_asides.chunks_desc',
+        'name' => 'source',
+        'desc' => 'prop_asides.source_desc',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -43,11 +43,11 @@ $properties = array(
         'lexicon' => 'asides:properties',
     )
     ,array(
-        'name' => 'outputSeparator',
-        'desc' => 'prop_asides.outputseparator_desc',
+        'name' => 'prefix',
+        'desc' => 'prop_asides.prefix_desc',
         'type' => 'textfield',
         'options' => '',
-        'value' => '',
+        'value' => 'aside.',
         'lexicon' => 'asides:properties',
     )
     ,array(

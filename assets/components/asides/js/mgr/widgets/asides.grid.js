@@ -72,22 +72,22 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
 
     ,getMenu: function() {
         var m = [];
-        if (this.menu.record.locked != 1 || editLocked == 1 ) {
+        //if (this.menu.record.locked != 1 || editLocked == 1 ) {
             m.push({
                 text: _('asides.aside_update')
                 ,handler: this.updateAside
             });
             m.push('-');
-            m.push({
-                text: _('asides.aside_clear')
-                ,handler: this.clearAside
-            });
-            m.push('-');
-            m.push({
-                text: _('asides.aside_remove')
-                ,handler: this.removeAside
-            });
-        }
+        //}
+        m.push({
+            text: _('asides.aside_clear')
+            ,handler: this.clearAside
+        });
+        m.push('-');
+        m.push({
+            text: _('asides.aside_remove')
+            ,handler: this.removeAside
+        });
         this.addContextMenuItem(m);
     }
     ,updateAside: function(btn,e) {

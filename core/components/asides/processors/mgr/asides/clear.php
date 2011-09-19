@@ -30,7 +30,7 @@ $Asides = $modx->getService('asides','Asides',$modx->getOption('asides.core_path
 if (!($Asides instanceof Asides)) return '';
 
 if (empty($scriptProperties['id'])) return $modx->error->failure($modx->lexicon('asides.aside_err_ns'));
-$aside = $modx->getObject('modChunk',$scriptProperties['id']);
+$aside = $modx->getObject('modChunk', $scriptProperties['id']);
 if (!$aside) return $modx->error->failure($modx->lexicon('asides.aside_err_nf'));
 
 // grabs the resources where this aside is
@@ -41,4 +41,4 @@ if (!$resources) {
 $Asides->cleanAside($aside->get('name'), $resources);
 
 // output
-return $modx->error->success('',$aside);
+return $modx->error->success('', $aside);

@@ -28,6 +28,7 @@ if ($object->xpdo) {
             }
 
             break;
+
         case xPDOTransport::ACTION_UPGRADE:
             break;
     }

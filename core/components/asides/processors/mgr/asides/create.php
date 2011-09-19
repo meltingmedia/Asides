@@ -39,6 +39,7 @@ if ($modx->error->hasError()) {
 $aside = $modx->newObject('modChunk');
 $aside->set('category', $modx->getOption('asides.categoryId'));
 $aside->fromArray($_POST);
+// adding PS (even if null) @TODO: set a description + type (textarea)
 $aside->setProperties(array(
                            'before' => $scriptProperties['before'],
                            'after' => $scriptProperties['after'],

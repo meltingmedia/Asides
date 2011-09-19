@@ -68,38 +68,40 @@ Asides.panel.Aside = function(config) {
     });
 
     // Property Sets
-    tabs.push({
-        title: 'Property sets'
-        ,layout: 'form'
-        ,bodyStyle: 'padding: 15px;'
-        ,autoHeight: true
-        ,defaults: {
-            border: false
-            ,labelWidth: 150
-        }
-        ,items: [{
-            layout: 'form'
-            ,labelWidth: 150
-            ,id: 'asides-aside-ps'
+    //if(editLocked == 1) {
+        tabs.push({
+            title: 'Property sets'
+            ,cls: 'modx-resource-tab'
+            ,layout: 'form'
+            ,bodyStyle: 'padding: 15px;'
+            ,autoHeight: true
+            ,defaults: {
+                border: false
+                ,labelWidth: 150
+            }
             ,items: [{
-                xtype: 'textarea'
-                ,fieldLabel: /*_('name')*/'Before'
-                ,description: 'Things to do/display before the content'
-                ,name: 'before'
-                ,id: 'asides-'+this.ident+'-before'
-                ,anchor: '90%'
-                ,grow: true
-            },{
-                xtype: 'textarea'
-                ,fieldLabel: /*_('description')*/'After'
-                ,description: 'Things to do/display after the content'
-                ,name: 'after'
-                ,id: 'asides-'+this.ident+'-after'
-                ,anchor: '90%'
-                ,grow: true
+                layout: 'form'
+                ,id: 'asides-aside-ps'
+                ,defaults: {
+                    anchor: '90%'
+                    ,grow: true
+                }
+                ,items: [{
+                    xtype: 'textarea'
+                    ,fieldLabel: /*_('name')*/'Before'
+                    ,description: 'Things to do/display before the content'
+                    ,name: 'before'
+                    ,id: 'asides-'+this.ident+'-before'
+                },{
+                    xtype: 'textarea'
+                    ,fieldLabel: /*_('description')*/'After'
+                    ,description: 'Things to do/display after the content'
+                    ,name: 'after'
+                    ,id: 'asides-after'
+                }]
             }]
-        }]
-    });
+        });
+    //}
 
     var items = [];
     items.push({
@@ -122,10 +124,6 @@ Asides.panel.Aside = function(config) {
                 fn: this.setup
                 ,scope: this
             }
-            ,'beforeSubmit': {
-                fn: this.beforeSubmit
-                ,scope: this
-            }
             ,'success': {fn:this.success, scope:this}
         }
     });
@@ -141,9 +139,6 @@ Ext.extend(Asides.panel.Aside, MODx.FormPanel, {
         this.fireEvent('ready');
         this.initialized = true;
     }
-    /*,beforeSubmit: function(o) {
-        console.log('submit!');
-    }*/
     ,success: function(o) {
        if(!Asides.request.id) {
             //redirect to edit "mode" after successful ad creation

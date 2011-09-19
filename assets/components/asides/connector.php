@@ -34,7 +34,7 @@ $modx->asides = new Asides($modx);
 
 $modx->lexicon->load('asides:default');
 
-/* handle request */
+// handle request
 $path = $modx->getOption('processorsPath',$modx->asides->config,$corePath.'processors/');
 $modx->request->handleRequest(array(
     'processors_path' => $path,
