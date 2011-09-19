@@ -31,13 +31,17 @@ $aside = $modx->getObject('modChunk',$scriptProperties['id']);
 if (!$aside) return $modx->error->failure($modx->lexicon('asides.aside_err_nf'));
 
 $aside->fromArray($scriptProperties);
+$aside->setProperties(array(
+                           'before' => $scriptProperties['before'],
+                           'after' => $scriptProperties['after'],
+));
 
 if ($aside->save() == false) {
     return $modx->error->failure($modx->lexicon('asides.aside_err_save'));
 }
 
 // output
-$asideArray = $aside->toArray('',true);
+$asideArray = $aside->toArray('', true);
 
-//@TODO: optimum cache clearing
-return $modx->error->success('',$asideArray);
+$modx->cacheManager->refresh();
+return $modx->error->success('', $asideArray);

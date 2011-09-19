@@ -40,7 +40,6 @@ Asides.grid.Items = function(config) {
                 },scope:this}
             }
         }
-        // clear filter (source: lexicon grid)
         ,{
             xtype: 'button'
             ,id: 'asides-search-clear'
@@ -108,7 +107,12 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
                 ,id: this.menu.record.id
             }
             ,listeners: {
-                'success': {fn:function(r) { this.refresh(); },scope:this}
+                'success': {
+                    fn: function(r) {
+                        this.refresh();
+                    }
+                    ,scope:this
+                }
             }
         });
     }
@@ -124,91 +128,14 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
                 ,id: this.menu.record.id
             }
             ,listeners: {
-                'success': {fn:function(r) { this.refresh(); },scope:this}
+                'success': {
+                    fn: function(r) {
+                        this.refresh();
+                    }
+                    ,scope:this
+                }
             }
         });
     }
 });
 Ext.reg('asides-grid-items', Asides.grid.Items);
-
-
-
-
-/*
-Asides.window.CreateAside = function(config) {
-    config = config || {};
-    this.ident = config.ident || 'acaside'+Ext.id();
-    Ext.applyIf(config,{
-        title: _('asides.aside_create')
-        ,id: this.ident
-        ,url: Asides.config.connector_url
-        ,action: 'mgr/asides/create'
-        ,collapsible: false
-        ,width: '650'
-        ,fields: [{
-            xtype: 'textfield'
-            ,fieldLabel: _('name')
-            ,name: 'name'
-            ,id: 'asides-'+this.ident+'-name'
-            ,anchor: '90%'
-        },{
-            xtype: 'textfield'
-            ,fieldLabel: _('description')
-            ,name: 'description'
-            ,id: 'asides-'+this.ident+'-description'
-            ,anchor: '90%'
-        },{
-            xtype: 'asides-rte'
-            ,name: 'snippet'
-            ,id: 'asides-'+this.ident+'-snippet'
-            ,anchor: '90%'
-        }]
-    });
-    Asides.window.CreateAside.superclass.constructor.call(this,config);
-};
-Ext.extend(Asides.window.CreateAside,MODx.Window);
-Ext.reg('asides-window-aside-create',Asides.window.CreateAside);
-
-
-Asides.window.UpdateAside = function(config) {
-    config = config || {};
-    this.ident = config.ident || 'auaside'+Ext.id();
-    Ext.applyIf(config,{
-        title: _('asides.aside_update')
-        ,id: this.ident
-        ,url: Asides.config.connector_url
-        ,action: 'mgr/asides/update'
-        ,collapsible: false
-        ,width: '650'
-        ,fields: [{
-            xtype: 'hidden'
-            ,name: 'id'
-            ,id: 'asides-'+this.ident+'-id'
-        },{
-            xtype: 'textfield'
-            ,fieldLabel: _('name')
-            ,name: 'name'
-            ,id: 'asides-'+this.ident+'-name'
-            ,anchor: '90%'
-        },{
-            xtype: 'textfield'
-            ,fieldLabel: _('description')
-            ,name: 'description'
-            ,id: 'asides-'+this.ident+'-description'
-            ,anchor: '90%'
-        },{
-            xtype: 'asides-rte'
-            //xtype: 'tinymce'
-            //xtype: 'htmleditor'
-            //xtype: 'textarea'
-            ,name: 'snippet'
-            ,id: 'asides-'+this.ident+'-snippet'
-            //,id: 'ta'
-            ,anchor: '90%'
-        }]
-    });
-    Asides.window.UpdateAside.superclass.constructor.call(this,config);
-};
-Ext.extend(Asides.window.UpdateAside,MODx.Window);
-Ext.reg('asides-window-aside-update',Asides.window.UpdateAside);
-*/

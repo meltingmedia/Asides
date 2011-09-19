@@ -8,13 +8,13 @@
  */
 
 if (!isset($scriptProperties['chunks'])) {
-    return '';
+    return 'please, define a TV to check';
 }
-$outputSeparator = $modx->getOption('outputSeparator',$scriptProperties,"\n");
-$wrapper = !empty($wrapper) ? $wrapper : '';
-$toPlaceholder = $modx->getOption('toPlaceholder',$scriptProperties,false);
+$outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
+$wrapper = !empty($wrapper) ? $wrapper : 'aside.wrapper';
+$toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 
-$ar_chunks = explode('||',$chunks);
+$ar_chunks = explode('||', $chunks);
 $ar_chunks = array_unique($ar_chunks);
 
 $output = '';
@@ -24,9 +24,9 @@ foreach ($ar_chunks as $chunk) {
     if ($chunk != '') {
         if ($wrapper) {
             // we are wrapping the chunk with another chunk (layout purpose)
-            $chunkobj = $modx->getObject('modChunk',array('name'=>$chunk));
+            $chunkobj = $modx->getObject('modChunk', array('name' => $chunk));
             $chunkid = $chunkobj->get('id');
-            $c = $modx->getChunk($wrapper,array(
+            $c = $modx->getChunk($wrapper, array(
                                                'wrapper' => $modx->getChunk($chunk),
                                                 'id' => $chunkid,
                                           ));
@@ -42,11 +42,11 @@ foreach ($ar_chunks as $chunk) {
 }
 
 
-$output = implode($list,$outputSeparator);
+$output = implode($list, $outputSeparator);
 
 if (!empty($toPlaceholder)) {
     // if using a placeholder, output nothing and set output to specified placeholder
-    $modx->setPlaceholder($toPlaceholder,$output);
+    $modx->setPlaceholder($toPlaceholder, $output);
     return '';
 }
 

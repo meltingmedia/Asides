@@ -26,9 +26,40 @@
  * @subpackage controllers
  */
 
+$create = (empty($_REQUEST['id'])) ? true : false;
+
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/aside.panel.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/aside.js');
 $asides->loadRichTextEditor();
+
+$record = array();
+if (!$create) {
+    // updating an aside
+    $aside = $modx->getObject('modChunk', array(
+                                            'id' => $_REQUEST['id'],
+                                            'category' => $modx->getOption('asides.categoryId')
+                                          ));
+    if (!$aside) return 'error';
+    $record = $aside->toArray();
+    // Get the property sets
+    $properties = $aside->getProperties();
+    foreach ($properties as $k => $v) {
+        $record[$k] = $v;
+    }
+}
+
+$modx->regClientStartupHTMLBlock('
+<script type="text/javascript">
+// <![CDATA[
+Ext.onReady(function() {
+    MODx.load({
+        xtype: "asides-page-aside"
+        ,record: '.$modx->toJSON($record).'
+    });
+    MODx.loadRTE("ta");
+});
+// ]]>
+</script>');
 
 $output = '<div id="asides-panel-aside-div"></div>';
 

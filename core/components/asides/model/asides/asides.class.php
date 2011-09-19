@@ -51,7 +51,6 @@ class Asides {
         $this->modx->addPackage('asides',$this->config['modelPath']);
         $this->modx->lexicon->load('asides:default');
     }
-
     /**
      * Initializes Asides into different contexts.
      *
@@ -61,25 +60,26 @@ class Asides {
     public function initialize($ctx = 'web') {
         switch ($ctx) {
             case 'mgr':
-                if (!$this->modx->loadClass('asides.request.AsidesControllerRequest',$this->config['modelPath'],true,true)) {
+                if (!$this->modx->loadClass('asides.request.AsidesControllerRequest', $this->config['modelPath'], true, true)) {
                     return 'Could not load controller request handler.';
                 }
                 $this->request = new AsidesControllerRequest($this);
                 return $this->request->handleRequest();
             break;
+
             case 'connector':
-                if (!$this->modx->loadClass('asides.request.AsidesConnectorRequest',$this->config['modelPath'],true,true)) {
+                if (!$this->modx->loadClass('asides.request.AsidesConnectorRequest', $this->config['modelPath'], true, true)) {
                     return 'Could not load connector request handler.';
                 }
                 $this->request = new AsidesConnectorRequest($this);
                 return $this->request->handle();
             break;
+
             default:
                 //
             break;
         }
     }
-
     /**
      * Returns a string of resources using a given aside
      *
@@ -88,7 +88,7 @@ class Asides {
      */
     public function inResource($aside) {
         // grab the TV
-        $asideTV = $this->modx->getObject('modTemplateVar',array('name' => 'aside'));
+        $asideTV = $this->modx->getObject('modTemplateVar', array('name' => 'aside'));
         $asideTVid = '';
         if ($asideTV) {
             $asideTVid = $asideTV->get('id');
@@ -97,30 +97,30 @@ class Asides {
         }
 
         // target the modTemplates with this TV
-        $asideTpls = $this->modx->getCollection('modTemplateVarTemplate',array('tmplvarid' => $asideTVid));
+        $asideTpls = $this->modx->getCollection('modTemplateVarTemplate', array('tmplvarid' => $asideTVid));
         $activeTpls = array();
         foreach ($asideTpls as $tpl) {
-            array_push($activeTpls,$tpl->get('templateid'));
+            array_push($activeTpls, $tpl->get('templateid'));
         }
 
         // get the modResources using those tpls
         $res = array();
         foreach ($activeTpls as $activeTpl) {
-            $resTargets = $this->modx->getCollection('modResource',array('template' => $activeTpl));
+            $resTargets = $this->modx->getCollection('modResource', array('template' => $activeTpl));
             foreach ($resTargets as $resTarget) {
-                array_push($res,$resTarget->get('id'));
+                array_push($res, $resTarget->get('id'));
             }
         }
 
         // get the value of the aside TV in those resources
         $matches = array();
         foreach ($res as $resId) {
-            $resource = $this->modx->getObject('modResource',$resId);
+            $resource = $this->modx->getObject('modResource', $resId);
             $tvValue = $resource->getTVValue('aside');
-            $values = explode('||',$tvValue);
+            $values = explode('||', $tvValue);
             // check if the chunk name is in
-            if(in_array($aside->get('name'),$values)) {
-                array_push($matches,$resource->get('id'));
+            if(in_array($aside->get('name'), $values)) {
+                array_push($matches, $resource->get('id'));
             }
         }
 
@@ -131,7 +131,7 @@ class Asides {
             }
         }
 
-        return trim($o,',');
+        return trim($o, ',');
     }
 
     /**
@@ -142,15 +142,15 @@ class Asides {
      * @param string $ids a list of comma separated ids using this aside
      */
     public function cleanAside($aside, $ids) {
-        $resIds = explode(',',$ids);
+        $resIds = explode(',', $ids);
         $tv = $this->modx->getObject('modTemplateVar',array('name' => 'aside'));
         //@TODO: what if the tv has been renamed ?
         foreach ($resIds as $resourceId) {
-            $tvValue = $this->modx->getObject('modTemplateVarResource',array('tmplvarid' => $tv->get('id'), 'contentid' => $resourceId));
-            $value = str_replace($aside,'',$tvValue->get('value'));
-            $value = str_replace('||||','||',$value);
-            $value = trim($value,'||');
-            $tv->setValue($resourceId,$value);
+            $tvValue = $this->modx->getObject('modTemplateVarResource', array('tmplvarid' => $tv->get('id'), 'contentid' => $resourceId));
+            $value = str_replace($aside, '', $tvValue->get('value'));
+            $value = str_replace('||||', '||', $value);
+            $value = trim($value, '||');
+            $tv->setValue($resourceId, $value);
             $tv->save();
         }
     }
@@ -162,17 +162,12 @@ class Asides {
     public function loadRichTextEditor() {
         // register JS scripts
         $rte = $this->modx->getOption('which_editor');
-        //$this->modx->log(modX::LOG_LEVEL_ERROR, $this->modx->getOption('which_editor'));
-        $this->modx->setPlaceholder('which_editor', $rte);
         // Set which RTE if not core
         //if ($this->modx->context->getOption('use_editor', false, $this->modx->_userConfig) && !empty($rte)) {
         if (!empty($rte)) {
             // invoke OnRichTextEditorRegister event
-            $textEditors = $this->modx->invokeEvent('OnRichTextEditorRegister');
-            $this->modx->setPlaceholder('text_editors', $textEditors);
-
+            $this->modx->invokeEvent('OnRichTextEditorRegister');
             $this->modx->rteFields = array('ta');
-            $this->modx->setPlaceholder('replace_richtexteditor', $this->rteFields);
 
             // invoke OnRichTextEditorInit event
             $onRichTextEditorInit = $this->modx->invokeEvent('OnRichTextEditorInit', array(
@@ -180,8 +175,7 @@ class Asides {
                 'elements' => $this->modx->rteFields,
             ));
             if (is_array($onRichTextEditorInit)) {
-                $onRichTextEditorInit = implode('', $onRichTextEditorInit);
-                $this->modx->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
+                implode('', $onRichTextEditorInit);
             }
         }
     }

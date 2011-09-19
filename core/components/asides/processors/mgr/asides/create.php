@@ -21,15 +21,15 @@
  */
 /**
  * Create an aside chunk
- * 
+ *
  * @package asides
  * @subpackage processors
  */
-$alreadyExists = $modx->getObject('modChunk',array(
+$alreadyExists = $modx->getObject('modChunk', array(
     'name' => $_POST['name'],
 ));
 if ($alreadyExists) {
-    $modx->error->addField('name',$modx->lexicon('asides.aside_err_ae'));
+    $modx->error->addField('name', $modx->lexicon('asides.aside_err_ae'));
 }
 
 if ($modx->error->hasError()) {
@@ -39,9 +39,13 @@ if ($modx->error->hasError()) {
 $aside = $modx->newObject('modChunk');
 $aside->set('category', $modx->getOption('asides.categoryId'));
 $aside->fromArray($_POST);
+$aside->setProperties(array(
+                           'before' => $scriptProperties['before'],
+                           'after' => $scriptProperties['after'],
+));
 
 if ($aside->save() == false) {
     return $modx->error->failure($modx->lexicon('asides.aside_err_save'));
 }
 
-return $modx->error->success('',$aside);
+return $modx->error->success('', $aside);

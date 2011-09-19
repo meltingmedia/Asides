@@ -1,5 +1,6 @@
 Asides.panel.Home = function(config) {
     config = config || {};
+
     Ext.apply(config,{
         border: false
         ,baseCls: 'modx-formpanel'
@@ -28,5 +29,5 @@ Asides.panel.Home = function(config) {
     });
     Asides.panel.Home.superclass.constructor.call(this,config);
 };
-Ext.extend(Asides.panel.Home,MODx.Panel);
-Ext.reg('asides-panel-home',Asides.panel.Home);
+Ext.extend(Asides.panel.Home, MODx.Panel);
+Ext.reg('asides-panel-home', Asides.panel.Home);
