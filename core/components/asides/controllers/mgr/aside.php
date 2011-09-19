@@ -20,16 +20,16 @@
  * @package asides
  */
 /**
- * Loads the home page.
+ * Loads the aside "edit" page.
  *
  * @package asides
  * @subpackage controllers
  */
 
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/asides.grid.js');
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/home.panel.js');
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/home.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/aside.panel.js');
+$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/aside.js');
+$asides->loadRichTextEditor();
 
-$output = '<div id="asides-panel-home-div"></div>';
+$output = '<div id="asides-panel-aside-div"></div>';
 
 return $output;

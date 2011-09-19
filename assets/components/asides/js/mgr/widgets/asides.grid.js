@@ -1,5 +1,6 @@
 Asides.grid.Items = function(config) {
     config = config || {};
+
     Ext.applyIf(config,{
         id: 'asides-grid-items'
         ,url: Asides.config.connector_url
@@ -48,18 +49,11 @@ Asides.grid.Items = function(config) {
             ,listeners: {
                 'click': {fn: this.clearFilter, scope: this}
             }
-        }
-        // align right
-        ,'-'
-        ,{
-            text: _('asides.aside_create')
-            ,handler: this.createAside
-            ,scope: this
         }]
     });
     Asides.grid.Items.superclass.constructor.call(this,config);
 };
-Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
+Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
     windows: {}
     // for search
     ,search: function(tf,nv,ov) {
@@ -97,20 +91,7 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
         }
         this.addContextMenuItem(m);
     }
-
-    ,createAside: function(btn,e) {
-        if (!this.windows.createAside) {
-            this.windows.createAside = MODx.load({
-                xtype: 'asides-window-aside-create'
-                ,listeners: {
-                    'success': {fn:function() { this.refresh(); },scope:this}
-                }
-            });
-        }
-        this.windows.createAside.fp.getForm().reset();
-        this.windows.createAside.show(e.target);
-    }
-    ,updateAside: function(btn,e) {
+    /*,updateAside: function(btn,e) {
         if (!this.menu.record || !this.menu.record.id) return false;
         var r = this.menu.record;
 
@@ -120,19 +101,28 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
                 ,record: r
                 ,listeners: {
                     'success': {fn:function() { this.refresh(); },scope:this}
-                    /*,'activate': {
+                    ,'activate': {
                         fn:function() {
                             //console.log('active');
                             MODx.loadRTE('ta');
                         }
-                    }*/
+                    }
                 }
             });
         }
         this.windows.updateAside.fp.getForm().reset();
         this.windows.updateAside.fp.getForm().setValues(r);
         this.windows.updateAside.show(e.target);
+    }*/
+    ,updateAside: function(btn,e) {
+        if (!this.menu.record || !this.menu.record.id) return false;
+        var r = this.menu.record;
+        window.location = 'index.php?a='+Asides.action+'&action=aside&id='+this.menu.record.id;
     }
+    /*,editAd: function(btn,e) {
+        if (!this.menu.record || !this.menu.record.id) return false;
+        window.location = 'index.php?a='+MODx.request.a+'&action=ad&ad='+ this.menu.record.id;
+    }*/
     ,clearAside: function(btn,e) {
         if (!this.menu.record) return false;
 
@@ -166,11 +156,12 @@ Ext.extend(Asides.grid.Items,MODx.grid.Grid,{
         });
     }
 });
-Ext.reg('asides-grid-items',Asides.grid.Items);
+Ext.reg('asides-grid-items', Asides.grid.Items);
 
 
 
 
+/*
 Asides.window.CreateAside = function(config) {
     config = config || {};
     this.ident = config.ident || 'acaside'+Ext.id();
@@ -247,29 +238,4 @@ Asides.window.UpdateAside = function(config) {
 };
 Ext.extend(Asides.window.UpdateAside,MODx.Window);
 Ext.reg('asides-window-aside-update',Asides.window.UpdateAside);
-
-
-// TinyMCE for Asides edition
-Asides.tinymce = function(config) {
-    config = config || {};
-    Ext.applyIf(config, {
-        name : 'asides_rte'
-        ,fieldLabel: _('asides.aside.content')
-        ,tinymceSettings: {
-            theme: "advanced"
-            ,skin: "cirkuit"
-            ,plugins: "style,advimage,advlink,modxlink,searchreplace,print,contextmenu,paste,fullscreen,noneditable,nonbreaking,xhtmlxtras,visualchars,media,template"
-            ,theme_advanced_buttons1: "undo,redo,selectall,separator,nonbreaking,charmap,separator,image,modxlink,unlink,anchor,media,separator,fullscreen,code,help"
-            ,theme_advanced_buttons2: "bold,italic,underline,strikethrough,sub,sup,separator,bullist,numlist,separator,justifyleft,justifycenter,justifyright,justifyfull,separator,template"
-            ,theme_advanced_buttons3: "styleselect,formatselect"
-            ,theme_advanced_toolbar_location: "top"
-            ,theme_advanced_toolbar_align: "left"
-            ,theme_advanced_statusbar_location: "bottom"
-            ,theme_advanced_resizing: false
-            ,extended_valid_elements: "a[name|href|target|title|onclick],img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name],hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]"
-        }
-    });
-    Asides.tinymce.superclass.constructor.call(this, config);
-};
-Ext.extend(Asides.tinymce, Ext.ux.TinyMCE);
-Ext.reg('asides-rte', Asides.tinymce);
+*/

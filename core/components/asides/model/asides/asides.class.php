@@ -159,7 +159,7 @@ class Asides {
      *
      * @return void
      */
-/*    public function loadRichTextEditor() {
+    public function loadRichTextEditor() {
         // register JS scripts
         $rte = $this->modx->getOption('which_editor');
         //$this->modx->log(modX::LOG_LEVEL_ERROR, $this->modx->getOption('which_editor'));
@@ -184,5 +184,5 @@ class Asides {
                 $this->modx->setPlaceholder('onRichTextEditorInit', $onRichTextEditorInit);
             }
         }
-    }*/
+    }
 }

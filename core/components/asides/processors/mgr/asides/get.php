@@ -20,16 +20,18 @@
  * @package asides
  */
 /**
- * Loads the home page.
+ * Get a given aside chunk
  *
  * @package asides
- * @subpackage controllers
+ * @subpackage processors
  */
 
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/asides.grid.js');
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/home.panel.js');
-$modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/home.js');
+$modx->log(modX::LOG_LEVEL_ERROR, 'in get');
 
-$output = '<div id="asides-panel-home-div"></div>';
+if (empty($scriptProperties['id'])) return $modx->error->failure($modx->lexicon('modextra.item_err_ns'));
+$aside = $modx->getObject('modChunk', $scriptProperties['id']);
+if (!$aside) return $modx->error->failure($modx->lexicon('modextra.item_err_nf'));
 
-return $output;
+// output
+$asideArray = $aside->toArray('', true);
+return $modx->error->success('', $asideArray);

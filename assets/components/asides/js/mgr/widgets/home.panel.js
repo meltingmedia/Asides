@@ -22,7 +22,7 @@ Asides.panel.Home = function(config) {
                 },{
                     xtype: 'asides-grid-items'
                     ,preventRender: true
-                },]
+                }]
             }]
         }]
     });
