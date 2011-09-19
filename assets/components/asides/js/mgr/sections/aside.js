@@ -7,14 +7,21 @@ Asides.page.Aside = function(config) {
     config = config || {};
     Ext.applyIf(config,{
         buttons: [{
+            text: 'Save'
+            ,id: 'asides-btn-save'
+            ,handler: function() {
+                console.log('i\'ve been told to save')
+            }
+        },{
             text: 'Back'
-            ,id: 'adx-btn-back'
+            ,id: 'asides-btn-back'
             ,handler: function() {
                 location.href = '?a='+Asides.action;
             }
             ,scope: this
-        },{
+        },'-',{
             text: 'Help'
+            ,id: 'asides-btn-help'
         }]
         ,components: [{
             xtype: 'asides-panel-aside'

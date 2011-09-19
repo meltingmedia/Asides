@@ -9,7 +9,7 @@ Asides.page.Home = function(config) {
             text: _('asides.aside_create')
             ,id: 'asides-create'
             ,handler: this.createAside
-        },{
+        },'-',{
             text: 'help'
         }]
         ,components: [{

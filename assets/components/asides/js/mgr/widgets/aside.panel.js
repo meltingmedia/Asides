@@ -2,7 +2,7 @@ Asides.panel.Aside = function(config) {
     config = config || {record:{}};
     config.record = config.record || {};
 
-    Ext.apply(config,{
+    Ext.apply(config, {
         border: false
         ,baseCls: 'modx-formpanel'
         ,items: [{
@@ -28,6 +28,7 @@ Asides.panel.Aside = function(config) {
                         ,fieldLabel: 'ID'
                         ,name: 'id'
                         ,id: 'asides-'+this.ident+'-id'
+                        ,value: Asides.request.id
                     },{
                         xtype: 'textfield'
                         ,fieldLabel: _('name')
@@ -41,11 +42,31 @@ Asides.panel.Aside = function(config) {
                         ,id: 'asides-'+this.ident+'-description'
                         ,anchor: '90%'
                     },{
-                        xtype: 'textarea'
-                        ,name: 'snippet'
-                        //,id: 'asides-'+this.ident+'-snippet'
-                        ,id: 'ta'
+                        layout: 'column'
+                        ,border: false
                         ,anchor: '90%'
+                        ,items:[{
+                            layout: 'form'
+                            ,border: false
+                            ,width: 150
+                            ,items: [{
+                                id: 'modx-content-below'
+                                ,border: false
+                            }]
+                        },{
+                            columnWidth: 1
+                            ,layout: 'form'
+                            ,hideLabels: true
+                            ,labelWidth: 0
+                            ,border: false
+                            ,items: [{
+                                xtype: 'textarea'
+                                ,name: 'snippet'
+                                //,id: 'asides-'+this.ident+'-snippet'
+                                ,id: 'ta'
+                                ,anchor: '100%'
+                            }]
+                        }]
                     }]
                 }]
             },{

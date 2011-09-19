@@ -91,38 +91,11 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
         }
         this.addContextMenuItem(m);
     }
-    /*,updateAside: function(btn,e) {
-        if (!this.menu.record || !this.menu.record.id) return false;
-        var r = this.menu.record;
-
-        if (!this.windows.updateAside) {
-            this.windows.updateAside = MODx.load({
-                xtype: 'asides-window-aside-update'
-                ,record: r
-                ,listeners: {
-                    'success': {fn:function() { this.refresh(); },scope:this}
-                    ,'activate': {
-                        fn:function() {
-                            //console.log('active');
-                            MODx.loadRTE('ta');
-                        }
-                    }
-                }
-            });
-        }
-        this.windows.updateAside.fp.getForm().reset();
-        this.windows.updateAside.fp.getForm().setValues(r);
-        this.windows.updateAside.show(e.target);
-    }*/
     ,updateAside: function(btn,e) {
         if (!this.menu.record || !this.menu.record.id) return false;
         var r = this.menu.record;
         window.location = 'index.php?a='+Asides.action+'&action=aside&id='+this.menu.record.id;
     }
-    /*,editAd: function(btn,e) {
-        if (!this.menu.record || !this.menu.record.id) return false;
-        window.location = 'index.php?a='+MODx.request.a+'&action=ad&ad='+ this.menu.record.id;
-    }*/
     ,clearAside: function(btn,e) {
         if (!this.menu.record) return false;
 
