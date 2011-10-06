@@ -65,4 +65,4 @@ $_lang['cbs_sort'] = 'Sort';
 $_lang['setting_asides.categoryId'] = 'Category ID';
 $_lang['setting_asides.categoryId_desc'] = 'The category ID where your aside chunks are.';
 $_lang['setting_asides.prefix'] = 'Prefix';
-$_lang['setting_asides.prefix'] = 'Placeholders prefix.';
+$_lang['setting_asides.prefix_desc'] = 'Placeholders prefix.';

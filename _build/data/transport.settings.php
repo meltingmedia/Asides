@@ -34,6 +34,15 @@ $settings['asides.categoryId']->fromArray(array(
     'xtype' => 'textfield',
     'namespace' => 'asides',
     'area' => '',
-),'',true,true);
+), '', true, true);
+
+$settings['asides.prefix'] = $modx->newObject('modSystemSetting');
+$settings['asides.prefix']->fromArray(array(
+    'key' => 'asides.prefix',
+    'value' => 'aside.',
+    'xtype' => 'textfield',
+    'namespace' => 'asides',
+    'area' => '',
+), '', true, true);
 
 return $settings;

@@ -2,16 +2,19 @@
 Changelog for Asides.
 --------------------------------------------------------------------------------
 
-2011/09/20: 1.0.2-beta2
+2011/10/06: 1.0.2-rc1
 ========================================================
-- added idx, first, last, total placeholders
-- prefixed the placeholders
+- Better i18n
+- Added a plugin to manage the custom TV in a cleaner
+  way
+- Added idx, first, last, total placeholders
+- Prefixed the placeholders
 - showAside snippet becomes Asides
 - Removed getAside snippet
 - Usage of chunks property sets to 'hide' some content
   from the site editor (edit_locked right required,
   placeholders available = before, after)
-- Some RTE refactoring (TinyMCE is no more requiered &
+- Some RTE refactoring (TinyMCE is no more required &
   better integrated)
 - Added NL translation from Mark Hamstra
 - Added i18n for the search widget (on the grid) + clear

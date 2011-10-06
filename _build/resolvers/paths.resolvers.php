@@ -21,7 +21,7 @@ if ($object->xpdo) {
                 $object->xpdo->getOption('manager_path').'templates/default/element/tv/renders/input/',
             );
             foreach ($directories as $dir) {
-                @chmod($dir,0775);
+                @chmod($dir, 0775);
                 if (!is_writable($dir)) {
                     $success = false;
                 }

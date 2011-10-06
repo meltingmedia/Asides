@@ -20,27 +20,29 @@
  * @package asides
  */
 /**
- * Creates required TV
+ * Package in plugins
  *
  * @package asides
  * @subpackage build
  */
-$tvs = array();
+$plugins = array();
 
-$tvs[1]= $modx->newObject('modTemplateVar');
-$tvs[1]->fromArray(array(
-    'id' => 1,
-    'name' => 'aside',
-    'caption' => 'Asides',
-    'description' => 'List of chunks to be used as asides.',
-    'type' => 'Asides',
-    'display' => 'default',
-    'locked' => 0,
-    'rank' => 0,
-    'default_text' => '@INHERIT',
-    'elements' => '@SELECT name FROM modx_site_htmlsnippets WHERE category = YOUR CATEGORY ID',
-    //'display' => 'delim',
-    //'output_properties' => 'a:1:{s:9:"delimiter";s:2:"||";}',
-), '', true, true);
+// create the plugin object
+$plugins[0] = $modx->newObject('modPlugin');
+$plugins[0]->set('id', 1);
+$plugins[0]->set('name', 'asidesTV');
+$plugins[0]->set('description', 'Takes care of the asides TV.');
+$plugins[0]->set('plugincode', getSnippetContent($sources['plugins'] . 'plugin.asidesTV.php'));
+$plugins[0]->set('category', 0);
 
-return $tvs;
+$events = include $sources['events'].'events.asidesTV.php';
+if (is_array($events) && !empty($events)) {
+    $plugins[0]->addMany($events);
+    $modx->log(xPDO::LOG_LEVEL_INFO, 'Packaged in '.count($events).' Plugin Events for asidesTV.');
+    flush();
+} else {
+    $modx->log(xPDO::LOG_LEVEL_ERROR, 'Could not find plugin events for asidesTV!');
+}
+unset($events);
+
+return $plugins;

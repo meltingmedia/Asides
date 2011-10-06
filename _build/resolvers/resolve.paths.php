@@ -27,16 +27,16 @@
  * @package asides
  * @subpackage build
  */
-function createSetting(&$modx,$key,$value) {
-    $ct = $modx->getCount('modSystemSetting',array(
+function createSetting(&$modx, $key, $value) {
+    $ct = $modx->getCount('modSystemSetting', array(
         'key' => 'asides.'.$key,
     ));
     if (empty($ct)) {
         $setting = $modx->newObject('modSystemSetting');
-        $setting->set('key','asides.'.$key);
-        $setting->set('value',$value);
-        $setting->set('namespace','asides');
-        $setting->set('area','Paths');
+        $setting->set('key', 'asides.'.$key);
+        $setting->set('value', $value);
+        $setting->set('namespace', 'asides');
+        $setting->set('area', 'Paths');
         $setting->save();
     }
 }
@@ -47,11 +47,11 @@ if ($object->xpdo) {
             $modx =& $object->xpdo;
 
             // setup paths
-            createSetting($modx,'core_path',$modx->getOption('core_path').'components/asides/');
-            createSetting($modx,'assets_path',$modx->getOption('assets_path').'components/asides/');
+            createSetting($modx, 'core_path', $modx->getOption('core_path').'components/asides/');
+            createSetting($modx, 'assets_path', $modx->getOption('assets_path').'components/asides/');
 
             // setup urls
-            createSetting($modx,'assets_url',$modx->getOption('assets_url').'components/asides/');
+            createSetting($modx, 'assets_url', $modx->getOption('assets_url').'components/asides/');
         break;
     }
 }

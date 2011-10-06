@@ -20,27 +20,18 @@
  * @package asides
  */
 /**
- * Creates required TV
+ * Adds events to asideTV plugin
  *
  * @package asides
  * @subpackage build
  */
-$tvs = array();
+$events = array();
 
-$tvs[1]= $modx->newObject('modTemplateVar');
-$tvs[1]->fromArray(array(
-    'id' => 1,
-    'name' => 'aside',
-    'caption' => 'Asides',
-    'description' => 'List of chunks to be used as asides.',
-    'type' => 'Asides',
-    'display' => 'default',
-    'locked' => 0,
-    'rank' => 0,
-    'default_text' => '@INHERIT',
-    'elements' => '@SELECT name FROM modx_site_htmlsnippets WHERE category = YOUR CATEGORY ID',
-    //'display' => 'delim',
-    //'output_properties' => 'a:1:{s:9:"delimiter";s:2:"||";}',
+$events['OnTVInputRenderList']= $modx->newObject('modPluginEvent');
+$events['OnTVInputRenderList']->fromArray(array(
+    'event' => 'OnTVInputRenderList',
+    'priority' => 0,
+    'propertyset' => 0,
 ), '', true, true);
 
-return $tvs;
+return $events;
