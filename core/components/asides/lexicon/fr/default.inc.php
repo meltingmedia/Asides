@@ -65,3 +65,5 @@ $_lang['cbs_sort'] = 'Classer';
 // system settings
 $_lang['setting_asides.categoryId'] = 'ID de la catégorie';
 $_lang['setting_asides.categoryId_desc'] = 'l\'ID de la catégorie contenant les chunks de vos modules de colonne.';
+$_lang['setting_asides.prefix'] = 'Préfix';
+$_lang['setting_asides.prefix'] = 'Préfix des placeholders.';

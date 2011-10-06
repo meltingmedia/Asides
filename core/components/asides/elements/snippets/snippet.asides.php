@@ -6,16 +6,16 @@
  *
  * @package asides
  */
-$Asides = $modx->getService('asides','Asides',$modx->getOption('asides.core_path',null,$modx->getOption('core_path').'components/asides/').'model/asides/',$scriptProperties);
+$Asides = $modx->getService('asides', 'Asides', $modx->getOption('asides.core_path', null, $modx->getOption('core_path').'components/asides/').'model/asides/', $scriptProperties);
 if (!($Asides instanceof Asides)) return '';
 
 if (!isset($scriptProperties['source'])) {
-    return 'please, define a TV to check';
+    return 'please, define a TV to check'; //@TODO: i18n
 }
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
-$wrapper = !empty($wrapper) ? $wrapper : '';
+$wrapper = !empty($wrapper) ? $wrapper : 'aside.wrapper';
 $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
-$prefix = $modx->getOption('prefix', $scriptProperties, 'aside.');
+$prefix = $modx->getOption('asides.prefix', $scriptProperties, 'aside.');
 
 $ar_chunks = explode('||', $source);
 $ar_chunks = array_unique($ar_chunks);
