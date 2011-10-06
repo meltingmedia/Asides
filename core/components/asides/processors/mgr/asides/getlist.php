@@ -51,6 +51,7 @@ $asides = $modx->getCollection('modChunk', $c);
 $list = array();
 foreach ($asides as $aside) {
     $asideArray = $aside->toArray();
+    $asideArray['locked'] = $asideArray['locked'] == true ? $modx->lexicon('yes') : $modx->lexicon('no');
     $list[]= $asideArray;
 }
 return $this->outputArray($list, $count);
