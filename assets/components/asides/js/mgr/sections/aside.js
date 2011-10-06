@@ -6,7 +6,7 @@ Asides.page.Aside = function(config) {
         formpanel: 'asides-panel-aside'
         ,url: Asides.config.connector_url
         ,buttons: [{
-            text: config.record.id ? 'Save' : 'Create'
+            text: config.record.id ? _('asides.aside_save') : _('asides.aside_create')
             ,id: 'asides-btn-save'
             ,process: config.record.id ? 'mgr/asides/update' : 'mgr/asides/create'
             ,method: 'remote'
@@ -15,7 +15,7 @@ Asides.page.Aside = function(config) {
                 ,ctrl: true
             }]
         },{
-            text: 'Delete'
+            text: _('asides.aside_delete')
             ,id: 'asides-btn-delete'
             ,handler: function() {
                 if (!config.record.id) return;
@@ -38,15 +38,16 @@ Asides.page.Aside = function(config) {
                 });
             }
         },{
-            text: 'Back'
+            text: _('asides.back')
             ,id: 'asides-btn-back'
             ,handler: function() {
                 location.href = '?a='+Asides.action;
             }
             ,scope: this
         },'-',{
-            text: 'Help'
+            text: _('asides.help')
             ,id: 'asides-btn-help'
+            ,disabled: true
         }]
         ,components: [{
             xtype: 'asides-panel-aside'
@@ -54,7 +55,7 @@ Asides.page.Aside = function(config) {
             ,record: config.record || {}
         }]
     });
-    Asides.page.Aside.superclass.constructor.call(this,config);
+    Asides.page.Aside.superclass.constructor.call(this, config);
 };
-Ext.extend(Asides.page.Aside,MODx.Component);
-Ext.reg('asides-page-aside',Asides.page.Aside);
+Ext.extend(Asides.page.Aside, MODx.Component);
+Ext.reg('asides-page-aside', Asides.page.Aside);

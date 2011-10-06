@@ -11,6 +11,7 @@ Asides.page.Home = function(config) {
             ,handler: this.createAside
         },'-',{
             text: 'help'
+            ,disabled: true
         }]
         ,components: [{
             xtype: 'asides-panel-home'

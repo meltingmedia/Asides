@@ -20,24 +20,30 @@ Asides.grid.Items = function(config) {
         },{
             header: _('locked')
             ,dataIndex: 'locked'
+            //,value: @TODO: i18n yes/no
         }]
         ,tbar: [{
             xtype: 'textfield'
             ,id: 'asides-search-filter'
             ,emptyText: _('asides.search')+'…'
             ,listeners: {
-                'change': {fn:this.search,scope:this}
-                ,'render': {fn: function(cmp) {
-                    new Ext.KeyMap(cmp.getEl(), {
-                        key: Ext.EventObject.ENTER
-                        ,fn: function() {
-                            this.fireEvent('change',this);
-                            this.blur();
-                            return true;
-                        }
-                        ,scope: cmp
-                    });
-                },scope:this}
+                'change': {
+                    fn: this.search
+                    ,scope:this
+                }
+                ,'render': {
+                    fn: function(cmp) {
+                        new Ext.KeyMap(cmp.getEl(), {
+                            key: Ext.EventObject.ENTER
+                            ,fn: function() {
+                                this.fireEvent('change', this);
+                                this.blur();
+                                return true;
+                            }
+                            ,scope: cmp
+                        });
+                    }
+                    ,scope:this}
             }
         }
         ,{
@@ -46,21 +52,25 @@ Asides.grid.Items = function(config) {
             ,itemId: 'clear'
             ,text: _('asides.search_clear')
             ,listeners: {
-                'click': {fn: this.clearFilter, scope: this}
+                'click': {
+                    fn: this.clearFilter
+                    ,scope: this
+                }
             }
         }]
     });
-    Asides.grid.Items.superclass.constructor.call(this,config);
+    Asides.grid.Items.superclass.constructor.call(this, config);
 };
 Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
     windows: {}
-    // for search
-    ,search: function(tf,nv,ov) {
+
+    ,search: function(tf, nv ,ov) {
         var s = this.getStore();
         s.baseParams.query = tf.getValue();
         this.getBottomToolbar().changePage(1);
         this.refresh();
     }
+
     ,clearFilter: function() {
         this.getStore().baseParams = {
             action: 'mgr/asides/getlist'
@@ -90,12 +100,12 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
         });
         this.addContextMenuItem(m);
     }
-    ,updateAside: function(btn,e) {
+    ,updateAside: function(btn ,e) {
         if (!this.menu.record || !this.menu.record.id) return false;
         var r = this.menu.record;
         window.location = 'index.php?a='+Asides.action+'&action=aside&id='+this.menu.record.id;
     }
-    ,clearAside: function(btn,e) {
+    ,clearAside: function(btn ,e) {
         if (!this.menu.record) return false;
 
         MODx.msg.confirm({
@@ -116,7 +126,7 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
             }
         });
     }
-    ,removeAside: function(btn,e) {
+    ,removeAside: function(btn ,e) {
         if (!this.menu.record) return false;
 
         MODx.msg.confirm({

@@ -25,10 +25,15 @@
  * @package asides
  * @subpackage lexicon
  */
+$_lang['asides.aside_after'] = 'After';
+$_lang['asides.aside_after_desc'] = 'Content or snippets to be called after the aside main content';
+$_lang['asides.aside_before'] = 'Before';
+$_lang['asides.aside_before_desc'] = 'Content or snippets to be called before the aside main content';
 $_lang['asides.aside_clear'] = 'Clear this aside';
-$_lang['asides.aside.content'] = 'Content';
 $_lang['asides.aside_clear_confirm'] = 'Are you sure you want to remove this aside from any resource?';
-$_lang['asides.aside_create'] = 'Create an aside';
+$_lang['asides.aside_create'] = 'Create';
+$_lang['asides.aside_create_edit'] = 'Create/edit';
+$_lang['asides.aside_delete'] = 'Delete';
 $_lang['asides.aside_err_ae'] = 'An aside already exists with that name.';
 $_lang['asides.aside_err_nf'] = 'Aside not found.';
 $_lang['asides.aside_err_ns'] = 'Aside not specified.';
@@ -36,10 +41,14 @@ $_lang['asides.aside_err_remove'] = 'An error occurred while trying to remove th
 $_lang['asides.aside_err_remove_in_use'] = 'This aside is still used in the following(s) resource(s):<br /><br />[[+ids]].<br /><br />Please remove it from those resource(s) before deleting it.';
 $_lang['asides.aside_err_remove_not_in_use'] = 'This aside isn\'t used in any resource.';
 $_lang['asides.aside_err_save'] = 'An error occurred while trying to save the aside.';
+$_lang['asides.aside_properties'] = 'Properties';
+$_lang['asides.aside_save'] = 'Save';
 $_lang['asides.aside_remove'] = 'Remove this aside';
 $_lang['asides.aside_remove_confirm'] = 'Are you sure you want to remove this aside?';
 $_lang['asides.aside_remove_not_in_use'] = 'This aside isn\'t used in any resource';
 $_lang['asides.aside_update'] = 'Update this aside';
+$_lang['asides.back'] = 'Back';
+$_lang['asides.help'] = 'Help';
 $_lang['asides.menu'] = 'Asides';
 $_lang['asides.menu_desc'] = 'Manage your asides.';
 $_lang['asides.intro_msg'] = 'Manage your asides.';

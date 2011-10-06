@@ -5,7 +5,7 @@ Asides.panel.Aside = function(config) {
     var tabs = [];
     // Create/edit
     tabs.push({
-        title: /*_('asides.items')*/'Create/edit'
+        title: _('asides.aside_create_edit')
         ,cls: 'modx-resource-tab'
         ,layout: 'form'
         ,bodyStyle: 'padding: 15px;'
@@ -68,9 +68,9 @@ Asides.panel.Aside = function(config) {
     });
 
     // Property Sets
-    //if(editLocked == 1) {
+    if(fullview) {
         tabs.push({
-            title: 'Property sets'
+            title: _('asides.aside_properties')
             ,cls: 'modx-resource-tab'
             ,layout: 'form'
             ,bodyStyle: 'padding: 15px;'
@@ -88,20 +88,20 @@ Asides.panel.Aside = function(config) {
                 }
                 ,items: [{
                     xtype: 'textarea'
-                    ,fieldLabel: /*_('name')*/'Before'
-                    ,description: 'Things to do/display before the content'
+                    ,fieldLabel: _('asides.aside_before')
+                    ,description: _('asides.aside_before_desc')
                     ,name: 'before'
                     ,id: 'asides-'+this.ident+'-before'
                 },{
                     xtype: 'textarea'
-                    ,fieldLabel: /*_('description')*/'After'
-                    ,description: 'Things to do/display after the content'
+                    ,fieldLabel: _('asides.aside_after')
+                    ,description: _('asides.aside_after_desc')
                     ,name: 'after'
                     ,id: 'asides-after'
                 }]
             }]
         });
-    //}
+    }
 
     var items = [];
     items.push({
@@ -124,10 +124,13 @@ Asides.panel.Aside = function(config) {
                 fn: this.setup
                 ,scope: this
             }
-            ,'success': {fn:this.success, scope:this}
+            ,'success': {
+                fn: this.success
+                ,scope:this
+            }
         }
     });
-    Asides.panel.Aside.superclass.constructor.call(this,config);
+    Asides.panel.Aside.superclass.constructor.call(this, config);
 };
 
 Ext.extend(Asides.panel.Aside, MODx.FormPanel, {

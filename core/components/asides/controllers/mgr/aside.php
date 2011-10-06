@@ -27,6 +27,7 @@
  */
 
 $create = (empty($_REQUEST['id'])) ? true : false;
+$fullview = $modx->hasPermission('edit_locked');
 
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/aside.panel.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/aside.js');
@@ -36,10 +37,10 @@ $record = array();
 if (!$create) {
     // updating an aside
     $aside = $modx->getObject('modChunk', array(
-                                            'id' => $_REQUEST['id'],
-                                            'category' => $modx->getOption('asides.categoryId')
-                                          ));
-    if (!$aside) return 'error';
+        'id' => $_REQUEST['id'],
+        'category' => $modx->getOption('asides.categoryId')
+    ));
+    if (!$aside) return 'error'; //@TODO: i18n error msg
     $record = $aside->toArray();
     // Get the property sets
     $properties = $aside->getProperties();
@@ -50,6 +51,7 @@ if (!$create) {
 
 $modx->regClientStartupHTMLBlock('
 <script type="text/javascript">
+var fullview = '.($fullview ? 1 : 0).';
 // <![CDATA[
 Ext.onReady(function() {
     MODx.load({
