@@ -68,7 +68,7 @@ Asides.panel.Aside = function(config) {
     });
 
     // Property Sets
-    if(fullview) {
+    if(Asides.editLocked) {
         tabs.push({
             title: _('asides.aside_properties')
             ,cls: 'modx-resource-tab'

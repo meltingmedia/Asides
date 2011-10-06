@@ -28,14 +28,15 @@
 
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/asides.js');
 
-$hasPerm = $modx->hasPermission('edit_locked');
+$editLocked = $modx->hasPermission('edit_locked');
+
 $modx->regClientStartupHTMLBlock('<script type="text/javascript">
 Ext.onReady(function() {
     Asides.config = '.$modx->toJSON($asides->config).';
     Asides.config.connector_url = "'.$asides->config['connectorUrl'].'";
     Asides.action = "'.(!empty($_REQUEST['a']) ? $_REQUEST['a'] : 0).'";
     Asides.request = '.$modx->toJSON($_GET).';
-    var editLocked = '.($hasPerm ? 1 : 0).';
+    Asides.editLocked = '.($editLocked ? 1 : 0).';
 });
 </script>');
 

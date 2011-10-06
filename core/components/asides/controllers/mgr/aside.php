@@ -27,7 +27,7 @@
  */
 
 $create = (empty($_REQUEST['id'])) ? true : false;
-$fullview = $modx->hasPermission('edit_locked');
+$editLocked = $modx->hasPermission('edit_locked');
 
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/widgets/aside.panel.js');
 $modx->regClientStartupScript($asides->config['jsUrl'].'mgr/sections/aside.js');
@@ -41,6 +41,11 @@ if (!$create) {
         'category' => $modx->getOption('asides.categoryId')
     ));
     if (!$aside) return 'error'; //@TODO: i18n error msg
+
+    if($aside->get('locked') == 1 && !$editLocked) {
+        return 'access denied'; //@TODO: i18n
+    }
+
     $record = $aside->toArray();
     // Get the property sets
     $properties = $aside->getProperties();
@@ -51,7 +56,6 @@ if (!$create) {
 
 $modx->regClientStartupHTMLBlock('
 <script type="text/javascript">
-var fullview = '.($fullview ? 1 : 0).';
 // <![CDATA[
 Ext.onReady(function() {
     MODx.load({

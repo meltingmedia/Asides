@@ -20,7 +20,6 @@ Asides.grid.Items = function(config) {
         },{
             header: _('locked')
             ,dataIndex: 'locked'
-            //,value: @TODO: i18n yes/no
         }]
         ,tbar: [{
             xtype: 'textfield'
@@ -82,13 +81,13 @@ Ext.extend(Asides.grid.Items, MODx.grid.Grid, {
 
     ,getMenu: function() {
         var m = [];
-        //if (this.menu.record.locked != 1 || editLocked == 1 ) {
+        if (this.menu.record.locked != _('yes') || Asides.editLocked == 1 ) {
             m.push({
                 text: _('asides.aside_update')
                 ,handler: this.updateAside
             });
             m.push('-');
-        //}
+        }
         m.push({
             text: _('asides.aside_clear')
             ,handler: this.clearAside
