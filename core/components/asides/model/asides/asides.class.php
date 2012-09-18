@@ -51,35 +51,7 @@ class Asides {
         $this->modx->addPackage('asides',$this->config['modelPath']);
         $this->modx->lexicon->load('asides:default');
     }
-    /**
-     * Initializes Asides into different contexts.
-     *
-     * @access public
-     * @param string $ctx The context to load. Defaults to web.
-     */
-    public function initialize($ctx = 'web') {
-        switch ($ctx) {
-            case 'mgr':
-                if (!$this->modx->loadClass('asides.request.AsidesControllerRequest', $this->config['modelPath'], true, true)) {
-                    return 'Could not load controller request handler.';
-                }
-                $this->request = new AsidesControllerRequest($this);
-                return $this->request->handleRequest();
-            break;
 
-            case 'connector':
-                if (!$this->modx->loadClass('asides.request.AsidesConnectorRequest', $this->config['modelPath'], true, true)) {
-                    return 'Could not load connector request handler.';
-                }
-                $this->request = new AsidesConnectorRequest($this);
-                return $this->request->handle();
-            break;
-
-            default:
-                //
-            break;
-        }
-    }
     /**
      * Returns a string of resources using a given aside
      *
@@ -154,6 +126,7 @@ class Asides {
             $tv->save();
         }
     }
+
     /**
      * Initialize a RichText Editor, if set
      *
@@ -179,6 +152,7 @@ class Asides {
             }
         }
     }
+
     /**
      * Gets a Chunk and caches it; also falls back to file-based templates
      * for easier debugging.
@@ -205,6 +179,7 @@ class Asides {
         $chunk->setCacheable(false);
         return $chunk->process($properties);
     }
+
     /**
      * Returns a modChunk object from a template file.
      *

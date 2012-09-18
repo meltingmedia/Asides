@@ -4,6 +4,8 @@
  *
  * Display all selected chunks
  *
+ * @var modX $modx
+ * @var array $scriptProperties
  * @package asides
  */
 $Asides = $modx->getService('asides', 'Asides', $modx->getOption('asides.core_path', null, $modx->getOption('core_path').'components/asides/').'model/asides/', $scriptProperties);
