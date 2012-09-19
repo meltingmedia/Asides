@@ -1,20 +1,21 @@
-<div id="tv{$tv->id}-cb"></div>
+<div id="tv{$tv->id}-asides" style="width: 100%;"></div>
+
 <script type="text/javascript">
 // <![CDATA[
 {literal}
-    var reader{/literal}{$tv->id}{literal} = new Ext.data.ArrayReader({}, [
-        {name: 'id'}
-        ,{name: 'name'}
-        ,{name: 'value'}
-        ,{name: 'label'}
-        ,{name: 'checked'}
-    ]);
+Ext.onReady(function() {
 
     var store{/literal}{$tv->id}{literal} = new Ext.data.Store({
         autoDestroy: true
-        ,reader: reader{/literal}{$tv->id}{literal}
+        ,reader: new Ext.data.ArrayReader({}, [
+            {name: 'id'}
+            ,{name: 'name'}
+            ,{name: 'value'}
+            ,{name: 'label'}
+            ,{name: 'checked'}
+        ])
         ,data: [{/literal}
-            {foreach from=$opts item=item key=k name=cbs}
+            {foreach from=$opts item=item key=k name=asides}
                 {literal}[{/literal}
                 'tv{$tv->id}-{$k}',
                 'tv{$tv->id}[]',
@@ -28,23 +29,19 @@
 
     var grid{/literal}{$tv->id}{literal} = new Ext.grid.GridPanel({
         store: store{/literal}{$tv->id}{literal}
-        ,colModel: new Ext.grid.ColumnModel({
-            defaults: {
-                width: 250
-                ,sortable: false
-            }
-            ,columns: [{
-                id: 'label'
-                ,header: '{/literal}{$checkboxsortable.cbs_name}{literal}'
-                ,dataIndex: 'label'
-                ,width: 420
-            },{
-                id: 'checked'
-                ,header: '{/literal}{$checkboxsortable.cbs_active}{literal}'
-                ,dataIndex: 'checked'
-                ,width: 80
-            }]
-        })
+        ,columns: [{
+            id: 'label'
+            ,header: _('asides.column_name')
+            ,dataIndex: 'label'
+//            ,width: 1303 - 80
+//            ,fixed: true
+        },{
+            id: 'checked'
+            ,header: _('asides.column_active')
+            ,dataIndex: 'checked'
+            ,width: 80
+            ,fixed: true
+        }]
         ,listeners: {
             click: {
                 fn: MODx.fireResourceFormChange
@@ -53,20 +50,34 @@
         }
         ,viewConfig: {
             forceFit: true
+            ,enableRowBody: true
+            ,autoFill: true
+            ,headersDisabled: true
         }
-        ,width: 500
-        ,height: 450
+        ,anchor: '100%'
         ,autoHeight: true
-        ,frame: true
+        ,stripeRows: true
+        //,frame: true
         ,enableDragDrop: true
-        ,ddGroup: 'zusatzInhalteGroup'
-        ,ddText: '{/literal}{$checkboxsortable.cbs_sort}{literal}'
-        ,renderTo: {/literal}'tv{$tv->id}-cb'{literal}
+        ,enableHdMenu: false
+        ,enableColumnMove: false
+        ,enableColumnResize: false
+        ,enableColumnHide: false
+        //,forceLayout: true
+
+        ,ddGroup: 'asidesGroup'
+        ,ddText: _('asides.entry_sort')
+        ,renderTo: {/literal}'tv{$tv->id}-asides'{literal}
+//        ,tbar: ['->', {
+//            xtype: 'button'
+//            ,text: 'test'
+//        }]
     });
 
+    // Dropzone
     var ddrow{/literal}{$tv->id}{literal} = new Ext.dd.DropTarget(
         grid{/literal}{$tv->id}{literal}.getView().mainBody, {
-        ddGroup: 'zusatzInhalteGroup'
+        ddGroup: 'asidesGroup'
         ,notifyDrop: function(dd, e, data) {
             var sm = grid{/literal}{$tv->id}{literal}.getSelectionModel();
             var rows = sm.getSelections();
@@ -86,6 +97,9 @@
             }
         }
     });
+
+    //console.log(grid{/literal}{$tv->id}{literal});
+});
 {/literal}
 // ]]>
 </script>

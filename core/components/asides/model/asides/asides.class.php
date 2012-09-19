@@ -38,7 +38,7 @@ class Asides {
             'jsUrl' => $assetsUrl.'js/',
             'imagesUrl' => $assetsUrl.'images/',
 
-            'connectorUrl' => $connectorUrl,
+            'connector_url' => $connectorUrl,
 
             'corePath' => $corePath,
             'modelPath' => $corePath.'model/',
@@ -46,6 +46,8 @@ class Asides {
             'chunkSuffix' => '.chunk.tpl',
             'snippetsPath' => $corePath.'elements/snippets/',
             'processorsPath' => $corePath.'processors/',
+
+            'templates_path' => $corePath . 'templates/',
         ),$config);
 
         $this->modx->addPackage('asides',$this->config['modelPath']);

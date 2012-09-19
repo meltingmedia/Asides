@@ -1,9 +1,10 @@
-Ext.onReady(function() {
-    MODx.load({ xtype: 'asides-page-home'});
-});
+//Ext.onReady(function() {
+//    MODx.load({ xtype: 'asides-page-home'});
+//});
 
 Asides.page.Home = function(config) {
     config = config || {};
+
     Ext.applyIf(config,{
         buttons: [{
             text: _('asides.aside_create')
@@ -22,7 +23,7 @@ Asides.page.Home = function(config) {
 };
 Ext.extend(Asides.page.Home, MODx.Component, {
     createAside: function() {
-        location.href = '?a='+Asides.action+'&action=aside';
+        location.href = '?a=' + Asides.action + '&action=aside';
     }
 });
 Ext.reg('asides-page-home', Asides.page.Home);

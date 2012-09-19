@@ -57,10 +57,14 @@ $_lang['asides.items'] = 'Asides';
 $_lang['asides.search'] = 'Rechercher';
 $_lang['asides.search_clear'] = 'Effacer les filtres';
 
-// sortable check box TV
-$_lang['cbs_name'] = 'Nom';
-$_lang['cbs_active'] = 'Actif';
-$_lang['cbs_sort'] = 'Classer';
+// TV strings
+$_lang['asides.column_name'] = 'Nom';
+$_lang['asides.column_active'] = 'Actif';
+$_lang['asides.entry_sort'] = 'Classer';
+
+$_lang['asides_column_name'] = 'Nom';
+$_lang['asides_column_active'] = 'Actif';
+$_lang['asides_entry_sort'] = 'Classer';
 
 // system settings
 $_lang['setting_asides.categoryId'] = 'ID de la catégorie';

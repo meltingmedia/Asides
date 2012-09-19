@@ -25,24 +25,14 @@ class modTemplateVarInputRenderAsides extends modTemplateVarInputRender {
     }
 
     public function process($value, array $params = array()) {
-        $this->modx->log(modX::LOG_LEVEL_ERROR, 'in asides process');
+        //$this->modx->log(modX::LOG_LEVEL_ERROR, 'in asides process');
         //$this->modx->log(modX::LOG_LEVEL_ERROR, $value ."\n". print_r($params, true));
 
         $default = explode('||', $this->tv->default_text); // all standard values
         $value = trim($value);
         $value = empty($value) ? $default : explode('||', $value); // current saved values or default
 
-        $index_list = $this->getInputOptions();
-        //$this->modx->log(modX::LOG_LEVEL_ERROR, print_r($index_list, true));
-
-        $inputoptions = array();
-        foreach ($index_list as $inputoption){
-            $inputopt_array = (is_array($inputoption)) ? $inputoption : explode('==', $inputoption);
-            $option['value'] = isset($inputopt_array[1])? $inputopt_array[1] : $inputopt_array[0];
-            $option['text'] = htmlspecialchars($inputopt_array[0], ENT_COMPAT, $this->modx->getOption('modx_charset'));
-            $option['checked'] = false;
-            $inputoptions[$option['value']] = $option;
-        }
+        $inputoptions = $this->prepareRecords();
 
         $options = array();
         if (!empty($value[0]) && count($value) > 0){
@@ -57,12 +47,31 @@ class modTemplateVarInputRenderAsides extends modTemplateVarInputRender {
         $options = count($options) > 0 ? array_merge($options, $inputoptions) : $inputoptions;
         //$this->modx->log(modX::LOG_LEVEL_ERROR, print_r($options, true));
 
-        $this->modx->lexicon->load('tv_widget','asides:default');
-        $this->modx->smarty->assign('checkboxsortable', $this->modx->lexicon->fetch() );
-//        $this->modx->smarty->assign('opts', $options);
-//        $this->modx->setPlaceholders($this->modx->lexicon->fetch());
+//        $this->modx->lexicon->load('asides:default');
+//        $this->modx->smarty->assign('asides', $this->modx->lexicon->fetch());
 
         $this->setPlaceholder('opts', $options);
+    }
+
+    /**
+     * Prepares the default input options to be usable within the grid store
+     *
+     * @return array The store array
+     */
+    public function prepareRecords() {
+        $options = $this->getInputOptions();
+        //$this->modx->log(modX::LOG_LEVEL_ERROR, print_r($index_list, true));
+
+        $inputoptions = array();
+        foreach ($options as $inputoption){
+            $inputopt_array = (is_array($inputoption)) ? $inputoption : explode('==', $inputoption);
+            $option['value'] = isset($inputopt_array[1]) ? $inputopt_array[1] : $inputopt_array[0];
+            $option['text'] = htmlspecialchars($inputopt_array[0], ENT_COMPAT, $this->modx->getOption('modx_charset'));
+            $option['checked'] = false;
+            $inputoptions[$option['value']] = $option;
+        }
+
+        return $inputoptions;
     }
 }
 
