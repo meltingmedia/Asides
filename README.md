@@ -6,8 +6,8 @@ right).
 
 ## Requirements
 
-Asides is developped under MODX Revolution 2.1.0-rc4 & MySQL, but i *should* work smoothly with MsSQL or
-Revolution 2.0.x.
+* MODX Revolution 2.2+
+* TinyMCE
 
 ## Configuration
 

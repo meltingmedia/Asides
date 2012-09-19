@@ -57,9 +57,9 @@ $_lang['asides.search'] = 'Search';
 $_lang['asides.search_clear'] = 'Clear filters';
 
 // sortable check box TV
-$_lang['cbs_name'] = 'Name';
-$_lang['cbs_active'] = 'Active';
-$_lang['cbs_sort'] = 'Sort';
+$_lang['asides.column_name'] = 'Name';
+$_lang['asides.column_active'] = 'Active';
+$_lang['asides.entry_sort'] = 'Sort';
 
 // system settings
 $_lang['setting_asides.categoryId'] = 'Category ID';

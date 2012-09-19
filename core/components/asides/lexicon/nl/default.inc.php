@@ -46,9 +46,9 @@ $_lang['asides.intro_msg'] = 'Beheer je Blokken.';
 $_lang['asides.items'] = 'Blokken';
 
 // sortable check box TV
-$_lang['cbs_name'] = 'Naam';
-$_lang['cbs_active'] = 'Actief';
-$_lang['cbs_sort'] = 'Sorteren';
+$_lang['asides.column_name'] = 'Naam';
+$_lang['asides.column_active'] = 'Actief';
+$_lang['asides.entry_sort'] = 'Sorteren';
 
 // system settings
 $_lang['setting_asides.categoryId'] = 'Categorie ID';

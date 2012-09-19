@@ -62,10 +62,6 @@ $_lang['asides.column_name'] = 'Nom';
 $_lang['asides.column_active'] = 'Actif';
 $_lang['asides.entry_sort'] = 'Classer';
 
-$_lang['asides_column_name'] = 'Nom';
-$_lang['asides_column_active'] = 'Actif';
-$_lang['asides_entry_sort'] = 'Classer';
-
 // system settings
 $_lang['setting_asides.categoryId'] = 'ID de la catégorie';
 $_lang['setting_asides.categoryId_desc'] = 'l\'ID de la catégorie contenant les chunks de vos modules de colonne.';
