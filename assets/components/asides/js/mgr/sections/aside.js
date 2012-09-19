@@ -2,6 +2,8 @@ Asides.page.Aside = function(config) {
     config = config || {record:{}};
     config.record = config.record || {};
 
+    //console.log(config);
+
     Ext.applyIf(config,{
         formpanel: 'asides-panel-aside'
         ,url: Asides.config.connector_url

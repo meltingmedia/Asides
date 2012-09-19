@@ -8,7 +8,8 @@ Asides.panel.Aside = function(config) {
         title: _('asides.aside_create_edit')
         ,cls: 'modx-resource-tab'
         ,layout: 'form'
-        ,bodyStyle: 'padding: 15px;'
+        //,bodyStyle: 'padding: 15px;'
+        ,bodyCssClass: 'main-wrapper'
         ,autoHeight: true
         ,defaults: {
             border: false
@@ -29,13 +30,13 @@ Asides.panel.Aside = function(config) {
                 ,fieldLabel: _('name')
                 ,name: 'name'
                 ,id: 'asides-'+this.ident+'-name'
-                ,anchor: '90%'
+                ,anchor: '100%'
             },{
                 xtype: 'textfield'
                 ,fieldLabel: _('description')
                 ,name: 'description'
                 ,id: 'asides-'+this.ident+'-description'
-                ,anchor: '90%'
+                ,anchor: '100%'
             },{
                 layout: 'column'
                 ,border: false
@@ -68,12 +69,13 @@ Asides.panel.Aside = function(config) {
     });
 
     // Property Sets
-    if(Asides.editLocked) {
+    if (Asides.editLocked) {
         tabs.push({
             title: _('asides.aside_properties')
             ,cls: 'modx-resource-tab'
             ,layout: 'form'
-            ,bodyStyle: 'padding: 15px;'
+            ,bodyCssClass: 'main-wrapper'
+            //,bodyStyle: 'padding: 15px;'
             ,autoHeight: true
             ,defaults: {
                 border: false
@@ -83,7 +85,7 @@ Asides.panel.Aside = function(config) {
                 layout: 'form'
                 ,id: 'asides-aside-ps'
                 ,defaults: {
-                    anchor: '90%'
+                    anchor: '100%'
                     ,grow: true
                 }
                 ,items: [{
@@ -105,7 +107,7 @@ Asides.panel.Aside = function(config) {
 
     var items = [];
     items.push({
-        html: '<h2>'+_('asides.menu')+'</h2>'
+        html: '<h2>' + _('asides.menu') + '</h2>'
         ,border: false
         ,cls: 'modx-page-header'
     });
@@ -116,6 +118,7 @@ Asides.panel.Aside = function(config) {
         border: false
         ,id: 'asides-panel-aside'
         ,baseCls: 'modx-formpanel'
+        ,cls: 'container'
         ,url: Asides.config.connector_url
         ,baseParams: {}
         ,items: items
@@ -143,10 +146,10 @@ Ext.extend(Asides.panel.Aside, MODx.FormPanel, {
         this.initialized = true;
     }
     ,success: function(o) {
-       if(!Asides.request.id) {
+       //if(!Asides.request.id) {
             //redirect to edit "mode" after successful ad creation
-            location.href = '?a='+Asides.action+'&action=aside&id='+o.result.object.id;
-        }
+            location.href = '?a=' + Asides.action + '&action=aside&id=' + o.result.object.id;
+        //}
     }
 });
 Ext.reg('asides-panel-aside', Asides.panel.Aside);

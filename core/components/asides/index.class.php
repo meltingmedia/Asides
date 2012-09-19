@@ -22,6 +22,7 @@ abstract class AsidesManagerController extends modManagerController {
         Ext.onReady(function() {
             Asides.config = '. $this->modx->toJSON($this->asides->config) .';
             Asides.action = "'. (!empty($_REQUEST['a']) ? $_REQUEST['a'] : 0) .'";
+            Asides.editLocked = '.($this->modx->hasPermission('edit_locked') ? 1 : 0).';
         });
         </script>');
         //return parent::initialize();
