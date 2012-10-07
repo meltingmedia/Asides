@@ -11,11 +11,11 @@
 $Asides = $modx->getService('asides', 'Asides', $modx->getOption('asides.core_path', null, $modx->getOption('core_path').'components/asides/').'model/asides/', $scriptProperties);
 if (!($Asides instanceof Asides)) return '';
 
-if (!isset($scriptProperties['source'])) {
+if (!isset($scriptProperties['source']) || strpos($scriptProperties['source'], '[[') !== false) {
     return 'please, define a TV to check'; //@TODO: i18n
 }
 $outputSeparator = $modx->getOption('outputSeparator', $scriptProperties, "\n");
-$wrapper = !empty($wrapper) ? $wrapper : 'aside.wrapper';
+$wrapper = isset($wrapper) ? $wrapper : 'aside.wrapper';
 $toPlaceholder = $modx->getOption('toPlaceholder', $scriptProperties, false);
 $prefix = $modx->getOption('asides.prefix', $scriptProperties, 'aside.');
 
@@ -39,14 +39,14 @@ foreach ($ar_chunks as $chunk) {
             $before = $props['before'];
             $after = $props['after'];
             $c = $Asides->getChunk($wrapper, array(
-                                               $prefix.'content' => $Asides->getChunk($chunk),
-                                               $prefix.'id' => $id,
-                                               $prefix.'before' => $before,
-                                               $prefix.'after' => $after,
-                                               $prefix.'idx' => $idx,
-                                               $prefix.'first' => $first,
-                                               $prefix.'last' => $last,
-                                               $prefix.'total' => $total,
+                $prefix.'content' => $Asides->getChunk($chunk),
+                $prefix.'id' => $id,
+                $prefix.'before' => $before,
+                $prefix.'after' => $after,
+                $prefix.'idx' => $idx,
+                $prefix.'first' => $first,
+                $prefix.'last' => $last,
+                $prefix.'total' => $total,
             ));
         } else {
             // just get the chunk
